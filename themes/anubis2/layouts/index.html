@@ -1,0 +1,23 @@
+{{ define "main" }}
+    <div class="homepage-content">
+        {{ .Content }}
+    </div>
+
+    <div class="articles h-feed">
+        {{ $pages := where (where site.RegularPages "Type" "in" site.Params.mainSections) "Params.hidden" "!=" true }}
+        {{ range (.Paginate $pages).Pages }}
+            {{ partial "post-summary.html" . }}
+        {{ end }}
+        
+        {{ partial "pagination.html" . }}
+    </div>
+
+    
+    <!-- Check if all params.anubis2 parameters are valid -->
+    {{ $avaliableParams := slice "enablemathglobally" "enablecopycodebutton" "enablereadmorebutton" "colortheme" "enablecolorthemeswitcher" "police" "icp" "social" "customcss" "customjs" }}
+    {{ range $param, $value := site.Params.Anubis2 }}
+        {{ if not (in $avaliableParams $param) }}
+            {{ warnf "Anubis2: params.anubis2.%v is not a valid parameter" $param }}
+        {{ end }}
+    {{ end }}
+{{ end }}

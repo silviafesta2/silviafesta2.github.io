@@ -1,0 +1,51 @@
+baseURL = "https://silviafesta2.github.io/"
+languageCode = "en-us"
+title = "Silvia Festa"
+theme = "anubis2"
+
+[params]
+description = "Computer Engineering Student at Università di Pisa"
+enableSocial = true           # Enables social icons
+enableThemeSwitcher = true    # Light/Dark toggle
+enableMathGlobally = false    # Enable MathJax globally if needed
+
+[params.Author]
+    name = "Silvia Festa"
+
+[[params.social]]
+id = "github"
+url = "https://github.com/silviafesta2"
+
+
+[[params.social]]
+id = "email"
+url = "mailto:silviafesta02@gmail.com"
+
+
+[markup]
+  [markup.highlight]
+    style = "onedark"
+    lineNos = true         # Enable line numbers (optional)
+
+[menu]
+
+    [[menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 1
+
+    [[menu.main]]
+        name = "Tags"
+        url = "/tags/"
+        weight = 3
+
+    [[menu.main]]
+        name = "Archive"
+        url = "/posts/"
+        weight = 4
+
+
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

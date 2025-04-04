@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Harvard on Silvia Festa</title>
+    <link>/tags/harvard/</link>
+    <description>Silvia Festa (Harvard)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+      
+
+      
+    
+
+    
+    
+    <atom:link href="/tags/harvard/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Autonomous Trash Collector Robot</title>
+      <link>/trash_collector_robot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/trash_collector_robot/</guid>
+      <description>&lt;h2 id=&#34;project-overview&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#project-overview&#34;&gt;
+        #
+    &lt;/a&gt;
+    Project Overview
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;For my final project, I built a smart autonomous robot capable of detecting and picking up small objects. This robot can be employed for street trash collection as well as for domestic tasks such as tidying rooms.&lt;/p&gt;
+&lt;h2 id=&#34;demo-video&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#demo-video&#34;&gt;
+        #
+    &lt;/a&gt;
+    demo video:
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/YAdDHLNdcoo?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;h2 id=&#34;how-does-it-work&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#how-does-it-work&#34;&gt;
+        #
+    &lt;/a&gt;
+    How Does It Work?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The robot autonomously navigates environments, detects obstacles and objects with TOF laser sensors, and picks objects with a precision robotic arm controlled by servo motors. The system is driven by ESP32-based hardware.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;materials--components&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#materials--components&#34;&gt;
+        #
+    &lt;/a&gt;
+    Materials &amp;amp; Components
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;motors&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#motors&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Motors&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2× &lt;a href=&#34;#&#34;&gt;Stepper motor Nema 17HS13-0404S1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4× &lt;a href=&#34;#&#34;&gt;MG90S Metal Geared Micro Servo Motor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2× &lt;a href=&#34;#&#34;&gt;MG996R Metal Geared Servo Motor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;boards-and-motor-drivers&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#boards-and-motor-drivers&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Boards and Motor Drivers&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1× &lt;a href=&#34;#&#34;&gt;ESP32 Feather (Huzzah)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1× &lt;a href=&#34;#&#34;&gt;Protoboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2× &lt;a href=&#34;#&#34;&gt;Stepper Motor Driver A4988&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1× &lt;a href=&#34;#&#34;&gt;CNC Shield&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1× &lt;a href=&#34;#&#34;&gt;Servo driver PCA9685&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sensors&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sensors&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Sensors&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;3× &lt;a href=&#34;#&#34;&gt;GY-VL53L0XV2 L53L0X TOF Sensor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;wheels&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#wheels&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Wheels&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2× &lt;a href=&#34;#&#34;&gt;Traction Wheels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1× &lt;a href=&#34;#&#34;&gt;Swivel wheel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;connections&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#connections&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Connections&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Dupont cable kit&lt;/li&gt;
+&lt;li&gt;Jumper Dupont cable&lt;/li&gt;
+&lt;li&gt;USB connector and cables&lt;/li&gt;
+&lt;li&gt;Battery holder&lt;/li&gt;
+&lt;li&gt;Terminal block connector&lt;/li&gt;
+&lt;li&gt;Pin strip kit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;power-supply&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#power-supply&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Power Supply&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;3× &lt;a href=&#34;#&#34;&gt;Lithium battery 3.7 V&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-components&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#other-components&#34;&gt;
+        ##
+    &lt;/a&gt;
+    &lt;strong&gt;Other Components&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;LM2596S DC-DC 24V/12V to 5V 5A converter&lt;/li&gt;
+&lt;li&gt;Switch&lt;/li&gt;
+&lt;li&gt;2× Resistor 1kΩ&lt;/li&gt;
+&lt;li&gt;Hexagonal spacers kit&lt;/li&gt;
+&lt;li&gt;Screw kit&lt;/li&gt;
+&lt;li&gt;Insulant tape&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cad-design-and-prototyping&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#cad-design-and-prototyping&#34;&gt;
+        #
+    &lt;/a&gt;
+    CAD Design and Prototyping
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Initially, I designed the robot using Fusion 360, experimenting with different wheel configurations to optimize stability and maneuverability. Two physical prototypes were tested, with the three-wheel design ultimately proving superior.&lt;/p&gt;
+&lt;h3 id=&#34;final-design&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#final-design&#34;&gt;
+        ##
+    &lt;/a&gt;
+    final design:
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;&#34;&gt;
+    &lt;iframe src=&#34;https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd968e958ba8db393d8b3?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0YAWL3CAZgAmggLQB2AJy4AHCN78AbCIkSAZhJH8JAY2mCIAI22Mu06WgC%2BIALpA&#34;
+            frameborder=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+            webkitallowfullscreen=&#34;true&#34;
+            mozallowfullscreen=&#34;true&#34;
+            style=&#34;position:absolute; top:0; left: 0; width: 100%; height: 100%;&#34;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+  
+&lt;hr&gt;
+&lt;h2 id=&#34;3d-printing-and-laser-cutting&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#3d-printing-and-laser-cutting&#34;&gt;
+        #
+    &lt;/a&gt;
+    3D Printing and Laser Cutting
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;chassis&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#chassis&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Chassis
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The robot&amp;rsquo;s chassis was fabricated using laser cutting. It consists of two identical structural components positioned one above the other, providing strength, stability, and ease of assembly.
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;&#34;&gt;
+    &lt;iframe src=&#34;https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd968c98ee8fbcc962f1e?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BjAEwGYAOAJwB2CMIC0AI06Tu4gCzdJANnGNBs8QFZc-eVt4QYSycLQBfEAF0gA&#34;
+            frameborder=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+            webkitallowfullscreen=&#34;true&#34;
+            mozallowfullscreen=&#34;true&#34;
+            style=&#34;position:absolute; top:0; left: 0; width: 100%; height: 100%;&#34;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+  &lt;/p&gt;
+&lt;h3 id=&#34;spacers&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#spacers&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Spacers
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The two main chassis plates are held securely together by custom-designed, 3D-printed spacers, ensuring structural integrity and consistent alignment.
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;&#34;&gt;
+    &lt;iframe src=&#34;https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd96828a127061f445e4d?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BWAI24BYAzNwgAzALR8AxgA5cEmJIDsY7gE4ATHzHTOjACZ7pIyRFWN8IAL4gAukA&#34;
+            frameborder=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+            webkitallowfullscreen=&#34;true&#34;
+            mozallowfullscreen=&#34;true&#34;
+            style=&#34;position:absolute; top:0; left: 0; width: 100%; height: 100%;&#34;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+  &lt;/p&gt;
+&lt;h3 id=&#34;sensors-holder&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sensors-holder&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Sensors holder
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;The laser distance sensors are firmly secured using a custom-designed, 3D-printed holder. This ensures consistent positioning, accurate measurements, and reliable operation during robot navigation and object detection tasks.
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;&#34;&gt;
+    &lt;iframe src=&#34;https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd96822e1adec6fe75225?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BjCANgDMAHLj4ATALQB2AJw8JYgCyLcYgEYCJMVRHkr5nAes4wVaAL4gAukA&#34;
+            frameborder=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+            webkitallowfullscreen=&#34;true&#34;
+            mozallowfullscreen=&#34;true&#34;
+            style=&#34;position:absolute; top:0; left: 0; width: 100%; height: 100%;&#34;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+  &lt;/p&gt;
+&lt;h3 id=&#34;connector&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#connector&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Connector
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;I designed a low-profile connector to securely attach structural components of the robot chassis, reducing the assembly&amp;rsquo;s overall height and ensuring it could easily navigate compact spaces.
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;&#34;&gt;
+    &lt;iframe src=&#34;https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd9685d3a95f55159dd0f?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BmAExkYDZuAMwgBaAEyMALONFTcAdgWiAnEIUxRADm4KArDCH8YEPVKloAviAC6QA&#34;
+            frameborder=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+            webkitallowfullscreen=&#34;true&#34;
+            mozallowfullscreen=&#34;true&#34;
+            style=&#34;position:absolute; top:0; left: 0; width: 100%; height: 100%;&#34;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+  &lt;/p&gt;
+&lt;h2 id=&#34;mechanical-arm&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#mechanical-arm&#34;&gt;
+        #
+    &lt;/a&gt;
+    Mechanical Arm
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;I sourced the mechanical arm design online and customized several components to better suit the specific requirements of my project. The original design reference can be found at &lt;a href=&#34;https://howtomechatronics.com/tutorials/arduino/diy-arduino-robot-arm-with-smartphone-control/&#34;&gt;this link&lt;/a&gt;.
+&lt;div style=&#34;display:flex; justify-content:center; gap:2rem; align-items:center;&#34;&gt;
+    &lt;div style=&#34;text-align:center;&#34;&gt;
+      &lt;h3&gt;3D Printed Parts&lt;/h3&gt;
+      &lt;img src=&#34;http://localhost:1313/images/arm-parts.jpg&#34; alt=&#34;Arm 3d printed parts&#34; width=&#34;300px&#34;&gt;
+    &lt;/div&gt;
+    &lt;div style=&#34;text-align:center;&#34;&gt;
+      &lt;h3&gt;Arm Servo Motors&lt;/h3&gt;
+      &lt;img src=&#34;http://localhost:1313/images/arm-servo-motors.jpeg&#34; alt=&#34;Arm servo motors&#34; width=&#34;300px&#34;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/p&gt;
+&lt;h2 id=&#34;electronics&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#electronics&#34;&gt;
+        #
+    &lt;/a&gt;
+    Electronics
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Initially, I selected the &lt;strong&gt;Metro board&lt;/strong&gt; for this project due to its numerous available pins suitable for diverse applications. However, I later transitioned to the &lt;strong&gt;ESP32 Feather (Huzzah)&lt;/strong&gt; board, recognizing its integrated Wi-Fi capability, which facilitates wireless control and monitoring.&lt;/p&gt;
+&lt;p&gt;Given the project&amp;rsquo;s requirement to simultaneously operate 3 sensors, 2 stepper motors, and 4 servo motors—typically requiring around 14 GPIO pins—I developed solutions to efficiently utilize the limited pin availability on the ESP32:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PCA9685 Servo Driver:&lt;/strong&gt; Enables control of up to 16 servo motors using only two I²C pins (SCL and SDA), significantly reducing GPIO pin usage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Custom Protoboard:&lt;/strong&gt; I fabricated a dedicated protoboard to centralize common lines such as GROUND, +3V, SCL, and SDA. This configuration allowed for multiple sensor connections without consuming additional GPIO pins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are the circuit diagrams:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/circuit1.png&#34; alt=&#34;circuit-diagram-1&#34; style=&#34;width: 700px;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/images/circuit2.png&#34; alt=&#34;circuit-diagram-2&#34; style=&#34;width: 700px;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/images/circuit3.png&#34; alt=&#34;circuit-diagram-3&#34; style=&#34;width: 700px;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;software&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#software&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Software
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduction&#34;&gt;
+        #
+    &lt;/a&gt;
+    Introduction
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;I structured the Arduino code into three main functional components: &lt;strong&gt;stepper motor control&lt;/strong&gt;, &lt;strong&gt;mechanical arm operation&lt;/strong&gt;, and &lt;strong&gt;sensor management&lt;/strong&gt;. Starting from example sketches, I adapted and expanded code from the &lt;code&gt;Adafruit_VL53L0X&lt;/code&gt; and &lt;code&gt;Adafruit_PWMServoDriver&lt;/code&gt; libraries, tailoring them specifically for this project&amp;rsquo;s requirements.&lt;/p&gt;
+&lt;p&gt;The robot&amp;rsquo;s software logic assumes prior knowledge of both the rectangular geometry of the room, defined precisely in centimeters, and its initial starting position represented by accurate &lt;em&gt;x&lt;/em&gt; and &lt;em&gt;y&lt;/em&gt; coordinates. Leveraging precise positional tracking provided by the stepper motors, the Arduino program can effectively differentiate between walls and large obstacles. Specifically, if only the central LiDAR sensor detects an object, the robot identifies it as a small, collectible item and initiates the object retrieval sequence. Conversely, when multiple sensors simultaneously detect an obstacle, the robot classifies it as either a larger movable obstacle—triggering an autonomous avoidance maneuver—or a fixed wall, prompting it to adjust its direction accordingly.&lt;/p&gt;
+&lt;h2 id=&#34;grid-based-exploration-and-object-retrieval-system-documentation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#grid-based-exploration-and-object-retrieval-system-documentation&#34;&gt;
+        #
+    &lt;/a&gt;
+    Grid-Based Exploration and Object Retrieval System Documentation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;This section explains the algorithm and software implemented on an Arduino-based robot that navigates an environment divided into a grid. The robot uses three VL53L0X laser sensors for distance measurements and a PCA9685-based servo driver for object retrieval. The system is designed to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Explore a defined grid&lt;/strong&gt;: The environment is partitioned into cells.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Detect objects&lt;/strong&gt;: Classify objects as small (for retrieval), walls, or large obstacles.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Avoid collisions&lt;/strong&gt;: Move in small increments with continuous sensor checks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan paths&lt;/strong&gt;: Greedily select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;system-overview&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#system-overview&#34;&gt;
+        #
+    &lt;/a&gt;
+    System overview
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The Finite State Machine diagram of the system is represented in the following diagram&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart TD
+    A[Start] --&gt; B[Initialize Sensors, Motors, and Grid]
+    B --&gt; C[Scan Starting Cell]
+    C --&gt; D[Find Closest Unvisited Cell]
+    D --&gt; E[Plan Path to Target Cell]
+    E --&gt; F[Move Forward Safely]
+    F --&gt; G[Scan New Cell]
+    G --&gt; H{Cell Status?}
+    H -- Visited/Obstacle --&gt; I[Update Grid Status]
+    I --&gt; D
+    H -- Small Object Detected --&gt; J[Execute Retrieval Sequence]
+    J --&gt; D
+    D --&gt; K[All Cells Visited?]
+    K -- Yes --&gt; L[Exploration Complete]
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;algorithm-description&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#algorithm-description&#34;&gt;
+        #
+    &lt;/a&gt;
+    Algorithm description
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The environment is divided into a grid of squares defined by three parameters:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;GRID_ROWS&lt;/strong&gt;: Total rows in the grid.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GRID_COLS&lt;/strong&gt;: Total columns in the grid.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CELL_SIZE_MM&lt;/strong&gt;: Side of the size of the squares.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The process is the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Initialization&lt;/strong&gt;: The grid is initialized with all cells marked as unvisited. The starting cell is immediately marked as visited.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Target Selection&lt;/strong&gt;: The robot continually searches for the closest unvisited cell that is not marked as an obstacle.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Path Planning and Movement&lt;/strong&gt;: Once a target is selected, the robot uses a greedy approach to move horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;sensor-based-object-detection&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#sensor-based-object-detection&#34;&gt;
+        #
+    &lt;/a&gt;
+    Sensor Based Object Detection
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The robot uses three VL53L0X sensors: left, center, and right. Based on their readings, the robot determines what is in front of it with the following rules:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Small Object&lt;/strong&gt;: If only the central sensor returns a reading below 600 mm, a small object is detected. The robot then executes the retrieval sequence.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wall&lt;/strong&gt;: If the robot is on the perimeter of the grid (i.e., at the edge) and all three sensors read below 600 mm, the cell is treated as part of a wall.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large Object&lt;/strong&gt;: In interior grid cells (not on the perimeter), if all three sensors read below 600 mm, the cell is marked as containing a large object. The robot will avoid these cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart TD
+    A[Read Sensors] --&gt; B{Central sensor &lt; 600?}
+    B -- Yes --&gt; C{Left &amp; Right sensors &gt;= 600?}
+    C -- Yes --&gt; D[Small Object Detected]
+    C -- No --&gt; E[Continue Detection]
+    B -- No --&gt; E
+    E --&gt; F{Robot on Perimeter?}
+    F -- Yes --&gt; G{All Sensors &lt; 600?}
+    G -- Yes --&gt; H[Wall Detected]
+    G -- No --&gt; I[No Object]
+    F -- No --&gt; J{All Sensors &lt; 600?}
+    J -- Yes --&gt; K[Large Object Detected]
+    J -- No --&gt; I[No Object]
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;collision-avoidance-and-safe-movement&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#collision-avoidance-and-safe-movement&#34;&gt;
+        #
+    &lt;/a&gt;
+    Collision Avoidance and Safe Movement
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;To ensure collision avoidance, the robot moves forward in small increments (e.g., one-quarter of a cell) and checks sensor readings after each step. If a collision risk (wall or large object) is detected, the movement stops immediately and the current cell is marked as an obstacle.&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;sequenceDiagram
+    participant R as Robot
+    participant S as Sensors
+    participant M as Movement Controller
+    
+    R-&gt;&gt;M: Begin safe forward movement
+    loop For each increment
+      M-&gt;&gt;S: Read sensor values
+      S--&gt;&gt;M: Return sensor readings
+      alt Collision detected
+        M-&gt;&gt;R: Stop movement and mark cell as obstacle
+      else No collision
+        M-&gt;&gt;R: Continue movement
+      end
+    end
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;navigation-strategy&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#navigation-strategy&#34;&gt;
+        #
+    &lt;/a&gt;
+    Navigation Strategy
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The navigation strategy employs a greedy algorithm that selects the nearest unvisited cell and then:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Uses horizontal moves when only the X-axis movement is needed.&lt;/li&gt;
+&lt;li&gt;Uses vertical moves when only the Y-axis movement is needed.&lt;/li&gt;
+&lt;li&gt;Uses diagonal moves (if both axes require movement and the diagonal cell is free) by turning 45° right, moving forward, and then turning 45° left to reorient.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-structure&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#code-structure&#34;&gt;
+        #
+    &lt;/a&gt;
+    Code Structure
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The source code is organized into the following sections:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Definitions &amp;amp; Global Settings&lt;/strong&gt;: Pin assignments, sensor calibration values, and grid parameters are declared here.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Movement Functions&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;moveForwardSafe(): Moves the robot forward in small, safe increments with continuous collision checks.&lt;/li&gt;
+&lt;li&gt;turnRight() and turnLeft(): Rotate the robot 90°.&lt;/li&gt;
+&lt;li&gt;diagonalMove(): Combines turning and forward movement for a diagonal move.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sensor and Servo Functions&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Sensor initialization and setup.&lt;/li&gt;
+&lt;li&gt;Functions to convert angles to PWM values and set servo positions.&lt;/li&gt;
+&lt;li&gt;servoPick(): Executes the retrieval sequence for small objects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grid-Based Exploration Functions&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Grid initialization and cell state updates&lt;/li&gt;
+&lt;li&gt;Functions for scanning the current cell and determining the cell status.&lt;/li&gt;
+&lt;li&gt;Functions to find and navigate to the closest unvisited cell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Main Loop&lt;/strong&gt;: The main loop calls the exploration function until all free cells are visited, then halts further movement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;testing-and-results&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#testing-and-results&#34;&gt;
+        #
+    &lt;/a&gt;
+    Testing and Results
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The algorithm has been tested in indoor environments, where the robot demonstrated millimetric precision in its movements. Even without a closed-loop feedback system, the position remained accurate during all tests due to strong ground adherence. However, it is important to note that in the absence of real-time feedback, disturbances or motor slips during movement could lead to small but cumulative localization errors. Nonetheless, under all tested conditions the robot maintained strong traction and successfully navigated and updated its grid status as expected.&lt;/p&gt;
+&lt;h2 id=&#34;future-work&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#future-work&#34;&gt;
+        #
+    &lt;/a&gt;
+    Future Work
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Future enhancements may include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Advanced Path Planning: Implementing algorithms like A* for optimal path planning.&lt;/li&gt;
+&lt;li&gt;Enhanced Sensor Fusion: Integrating additional sensors or filtering techniques to improve detection accuracy.&lt;/li&gt;
+&lt;li&gt;Dynamic Re-Planning: Enabling real-time updates to the grid map to handle moving obstacles.&lt;/li&gt;
+&lt;li&gt;User Interface: Developing visualization tools for real-time object detection and progress monitoring.&lt;/li&gt;
+&lt;li&gt;Position Estimation Algorithms: Integrating SLAM techniques to continuously estimate the robot&amp;rsquo;s position and compensate for movement inaccuracies.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conlcusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conlcusion&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conlcusion
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a greedy navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

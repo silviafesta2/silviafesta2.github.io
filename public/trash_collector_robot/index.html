@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="theme-name" content="Anubis2">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<title>Autonomous Trash Collector Robot - Silvia Festa</title>
+
+<meta name="description" content="PHYS-S12 - Intro to Digital Fabrication - Final Project Documentation">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.fbcda2deeeb74ee54833824e7414b0db80379a7281220e0d68d3be972fa65371.css" integrity="sha256-&#43;82i3u63TuVIM4JOdBSw24A3mnKBIg4NaNO&#43;ly&#43;mU3E=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">Silvia Festa</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+ 
+
+
+    
+
+
+
+    
+
+
+
+    
+        <li>
+            <a href="https://github.com/silviafesta2" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="mailto:silviafesta02@gmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://localhost:1313/" title="">Home</a>
+        
+        <a class="" href="http://localhost:1313/tags/" title="">Tags</a>
+        
+        <a class="" href="http://localhost:1313/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Autonomous Trash Collector Robot</h1>
+                
+
+            </header>
+            
+
+
+
+<div class="post-info noselect">
+    
+
+    <a class="post-hidden-url u-url" href="/trash_collector_robot/">/trash_collector_robot/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me">silviafesta2</a>
+
+
+    <div class="post-taxonomies">
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/harvard">#harvard</a></li>
+                
+                    
+                    <li><a href="/tags/project">#project</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#project-overview">Project Overview</a></li>
+    <li><a href="#demo-video">demo video:</a></li>
+    <li><a href="#how-does-it-work">How Does It Work?</a></li>
+    <li><a href="#materials--components">Materials &amp; Components</a>
+      <ul>
+        <li><a href="#motors"><strong>Motors</strong></a></li>
+        <li><a href="#boards-and-motor-drivers"><strong>Boards and Motor Drivers</strong></a></li>
+        <li><a href="#sensors"><strong>Sensors</strong></a></li>
+        <li><a href="#wheels"><strong>Wheels</strong></a></li>
+        <li><a href="#connections"><strong>Connections</strong></a></li>
+        <li><a href="#power-supply"><strong>Power Supply</strong></a></li>
+        <li><a href="#other-components"><strong>Other Components</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#cad-design-and-prototyping">CAD Design and Prototyping</a>
+      <ul>
+        <li><a href="#final-design">final design:</a></li>
+      </ul>
+    </li>
+    <li><a href="#3d-printing-and-laser-cutting">3D Printing and Laser Cutting</a>
+      <ul>
+        <li><a href="#chassis">Chassis</a></li>
+        <li><a href="#spacers">Spacers</a></li>
+        <li><a href="#sensors-holder">Sensors holder</a></li>
+        <li><a href="#connector">Connector</a></li>
+      </ul>
+    </li>
+    <li><a href="#mechanical-arm">Mechanical Arm</a></li>
+    <li><a href="#electronics">Electronics</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#grid-based-exploration-and-object-retrieval-system-documentation">Grid-Based Exploration and Object Retrieval System Documentation</a></li>
+    <li><a href="#system-overview">System overview</a></li>
+    <li><a href="#algorithm-description">Algorithm description</a></li>
+    <li><a href="#sensor-based-object-detection">Sensor Based Object Detection</a></li>
+    <li><a href="#collision-avoidance-and-safe-movement">Collision Avoidance and Safe Movement</a></li>
+    <li><a href="#navigation-strategy">Navigation Strategy</a></li>
+    <li><a href="#code-structure">Code Structure</a></li>
+    <li><a href="#testing-and-results">Testing and Results</a></li>
+    <li><a href="#future-work">Future Work</a></li>
+    <li><a href="#conlcusion">Conlcusion</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <h2 id="project-overview" >
+<div>
+    <a href="#project-overview">
+        #
+    </a>
+    Project Overview
+</div>
+</h2>
+<p>For my final project, I built a smart autonomous robot capable of detecting and picking up small objects. This robot can be employed for street trash collection as well as for domestic tasks such as tidying rooms.</p>
+<h2 id="demo-video" >
+<div>
+    <a href="#demo-video">
+        #
+    </a>
+    demo video:
+</div>
+</h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YAdDHLNdcoo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="how-does-it-work" >
+<div>
+    <a href="#how-does-it-work">
+        #
+    </a>
+    How Does It Work?
+</div>
+</h2>
+<p>The robot autonomously navigates environments, detects obstacles and objects with TOF laser sensors, and picks objects with a precision robotic arm controlled by servo motors. The system is driven by ESP32-based hardware.</p>
+<hr>
+<h2 id="materials--components" >
+<div>
+    <a href="#materials--components">
+        #
+    </a>
+    Materials &amp; Components
+</div>
+</h2>
+<h3 id="motors" >
+<div>
+    <a href="#motors">
+        ##
+    </a>
+    <strong>Motors</strong>
+</div>
+</h3>
+<ul>
+<li>2× <a href="#">Stepper motor Nema 17HS13-0404S1</a></li>
+<li>4× <a href="#">MG90S Metal Geared Micro Servo Motor</a></li>
+<li>2× <a href="#">MG996R Metal Geared Servo Motor</a></li>
+</ul>
+<h3 id="boards-and-motor-drivers" >
+<div>
+    <a href="#boards-and-motor-drivers">
+        ##
+    </a>
+    <strong>Boards and Motor Drivers</strong>
+</div>
+</h3>
+<ul>
+<li>1× <a href="#">ESP32 Feather (Huzzah)</a></li>
+<li>1× <a href="#">Protoboard</a></li>
+<li>2× <a href="#">Stepper Motor Driver A4988</a></li>
+<li>1× <a href="#">CNC Shield</a></li>
+<li>1× <a href="#">Servo driver PCA9685</a></li>
+</ul>
+<h3 id="sensors" >
+<div>
+    <a href="#sensors">
+        ##
+    </a>
+    <strong>Sensors</strong>
+</div>
+</h3>
+<ul>
+<li>3× <a href="#">GY-VL53L0XV2 L53L0X TOF Sensor</a></li>
+</ul>
+<h3 id="wheels" >
+<div>
+    <a href="#wheels">
+        ##
+    </a>
+    <strong>Wheels</strong>
+</div>
+</h3>
+<ul>
+<li>2× <a href="#">Traction Wheels</a></li>
+<li>1× <a href="#">Swivel wheel</a></li>
+</ul>
+<h3 id="connections" >
+<div>
+    <a href="#connections">
+        ##
+    </a>
+    <strong>Connections</strong>
+</div>
+</h3>
+<ul>
+<li>Dupont cable kit</li>
+<li>Jumper Dupont cable</li>
+<li>USB connector and cables</li>
+<li>Battery holder</li>
+<li>Terminal block connector</li>
+<li>Pin strip kit</li>
+</ul>
+<h3 id="power-supply" >
+<div>
+    <a href="#power-supply">
+        ##
+    </a>
+    <strong>Power Supply</strong>
+</div>
+</h3>
+<ul>
+<li>3× <a href="#">Lithium battery 3.7 V</a></li>
+</ul>
+<h3 id="other-components" >
+<div>
+    <a href="#other-components">
+        ##
+    </a>
+    <strong>Other Components</strong>
+</div>
+</h3>
+<ul>
+<li>LM2596S DC-DC 24V/12V to 5V 5A converter</li>
+<li>Switch</li>
+<li>2× Resistor 1kΩ</li>
+<li>Hexagonal spacers kit</li>
+<li>Screw kit</li>
+<li>Insulant tape</li>
+</ul>
+<hr>
+<h2 id="cad-design-and-prototyping" >
+<div>
+    <a href="#cad-design-and-prototyping">
+        #
+    </a>
+    CAD Design and Prototyping
+</div>
+</h2>
+<p>Initially, I designed the robot using Fusion 360, experimenting with different wheel configurations to optimize stability and maneuverability. Two physical prototypes were tested, with the three-wheel design ultimately proving superior.</p>
+<h3 id="final-design" >
+<div>
+    <a href="#final-design">
+        ##
+    </a>
+    final design:
+</div>
+</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;">
+    <iframe src="https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd968e958ba8db393d8b3?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0YAWL3CAZgAmggLQB2AJy4AHCN78AbCIkSAZhJH8JAY2mCIAI22Mu06WgC%2BIALpA"
+            frameborder="0"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            style="position:absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+  
+<hr>
+<h2 id="3d-printing-and-laser-cutting" >
+<div>
+    <a href="#3d-printing-and-laser-cutting">
+        #
+    </a>
+    3D Printing and Laser Cutting
+</div>
+</h2>
+<h3 id="chassis" >
+<div>
+    <a href="#chassis">
+        ##
+    </a>
+    Chassis
+</div>
+</h3>
+<p>The robot&rsquo;s chassis was fabricated using laser cutting. It consists of two identical structural components positioned one above the other, providing strength, stability, and ease of assembly.
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;">
+    <iframe src="https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd968c98ee8fbcc962f1e?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BjAEwGYAOAJwB2CMIC0AI06Tu4gCzdJANnGNBs8QFZc-eVt4QYSycLQBfEAF0gA"
+            frameborder="0"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            style="position:absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+  </p>
+<h3 id="spacers" >
+<div>
+    <a href="#spacers">
+        ##
+    </a>
+    Spacers
+</div>
+</h3>
+<p>The two main chassis plates are held securely together by custom-designed, 3D-printed spacers, ensuring structural integrity and consistent alignment.
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;">
+    <iframe src="https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd96828a127061f445e4d?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BWAI24BYAzNwgAzALR8AxgA5cEmJIDsY7gE4ATHzHTOjACZ7pIyRFWN8IAL4gAukA"
+            frameborder="0"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            style="position:absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+  </p>
+<h3 id="sensors-holder" >
+<div>
+    <a href="#sensors-holder">
+        ##
+    </a>
+    Sensors holder
+</div>
+</h3>
+<p>The laser distance sensors are firmly secured using a custom-designed, 3D-printed holder. This ensures consistent positioning, accurate measurements, and reliable operation during robot navigation and object detection tasks.
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;">
+    <iframe src="https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd96822e1adec6fe75225?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BjCANgDMAHLj4ATALQB2AJw8JYgCyLcYgEYCJMVRHkr5nAes4wVaAL4gAukA"
+            frameborder="0"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            style="position:absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+  </p>
+<h3 id="connector" >
+<div>
+    <a href="#connector">
+        ##
+    </a>
+    Connector
+</div>
+</h3>
+<p>I designed a low-profile connector to securely attach structural components of the robot chassis, reducing the assembly&rsquo;s overall height and ensuring it could easily navigate compact spaces.
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #ffffff;">
+    <iframe src="https://gmail988804.autodesk360.com/g/shares/SH56a43QTfd62c1cd9685d3a95f55159dd0f?viewState=NoIgbgDAdAjCA0IDeAdEAXAngBwKZoC40ARXAZwEsBzAOzXjQEMyzd1C0BmAExkYDZuAMwgBaAEyMALONFTcAdgWiAnEIUxRADm4KArDCH8YEPVKloAviAC6QA"
+            frameborder="0"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            style="position:absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+  </p>
+<h2 id="mechanical-arm" >
+<div>
+    <a href="#mechanical-arm">
+        #
+    </a>
+    Mechanical Arm
+</div>
+</h2>
+<p>I sourced the mechanical arm design online and customized several components to better suit the specific requirements of my project. The original design reference can be found at <a href="https://howtomechatronics.com/tutorials/arduino/diy-arduino-robot-arm-with-smartphone-control/">this link</a>.
+<div style="display:flex; justify-content:center; gap:2rem; align-items:center;">
+    <div style="text-align:center;">
+      <h3>3D Printed Parts</h3>
+      <img src="/images/arm-parts.jpg" alt="Arm 3d printed parts" width="300px">
+    </div>
+    <div style="text-align:center;">
+      <h3>Arm Servo Motors</h3>
+      <img src="/images/arm-servo-motors.jpeg" alt="Arm servo motors" width="300px">
+    </div>
+  </div>
+  </p>
+<h2 id="electronics" >
+<div>
+    <a href="#electronics">
+        #
+    </a>
+    Electronics
+</div>
+</h2>
+<p>Initially, I selected the <strong>Metro board</strong> for this project due to its numerous available pins suitable for diverse applications. However, I later transitioned to the <strong>ESP32 Feather (Huzzah)</strong> board, recognizing its integrated Wi-Fi capability, which facilitates wireless control and monitoring.</p>
+<p>Given the project&rsquo;s requirement to simultaneously operate 3 sensors, 2 stepper motors, and 4 servo motors—typically requiring around 14 GPIO pins—I developed solutions to efficiently utilize the limited pin availability on the ESP32:</p>
+<ul>
+<li>
+<p><strong>PCA9685 Servo Driver:</strong> Enables control of up to 16 servo motors using only two I²C pins (SCL and SDA), significantly reducing GPIO pin usage.</p>
+</li>
+<li>
+<p><strong>Custom Protoboard:</strong> I fabricated a dedicated protoboard to centralize common lines such as GROUND, +3V, SCL, and SDA. This configuration allowed for multiple sensor connections without consuming additional GPIO pins.</p>
+</li>
+</ul>
+<p>These are the circuit diagrams:</p>
+<p><img src="/images/circuit1.png" alt="circuit-diagram-1" style="width: 700px;">
+<img src="/images/circuit2.png" alt="circuit-diagram-2" style="width: 700px;">
+<img src="/images/circuit3.png" alt="circuit-diagram-3" style="width: 700px;"></p>
+<h1 id="software" >
+<div>
+    <a href="#software">
+        ##
+    </a>
+    Software
+</div>
+</h1>
+<h2 id="introduction" >
+<div>
+    <a href="#introduction">
+        #
+    </a>
+    Introduction
+</div>
+</h2>
+<p>I structured the Arduino code into three main functional components: <strong>stepper motor control</strong>, <strong>mechanical arm operation</strong>, and <strong>sensor management</strong>. Starting from example sketches, I adapted and expanded code from the <code>Adafruit_VL53L0X</code> and <code>Adafruit_PWMServoDriver</code> libraries, tailoring them specifically for this project&rsquo;s requirements.</p>
+<p>The robot&rsquo;s software logic assumes prior knowledge of both the rectangular geometry of the room, defined precisely in centimeters, and its initial starting position represented by accurate <em>x</em> and <em>y</em> coordinates. Leveraging precise positional tracking provided by the stepper motors, the Arduino program can effectively differentiate between walls and large obstacles. Specifically, if only the central LiDAR sensor detects an object, the robot identifies it as a small, collectible item and initiates the object retrieval sequence. Conversely, when multiple sensors simultaneously detect an obstacle, the robot classifies it as either a larger movable obstacle—triggering an autonomous avoidance maneuver—or a fixed wall, prompting it to adjust its direction accordingly.</p>
+<h2 id="grid-based-exploration-and-object-retrieval-system-documentation" >
+<div>
+    <a href="#grid-based-exploration-and-object-retrieval-system-documentation">
+        #
+    </a>
+    Grid-Based Exploration and Object Retrieval System Documentation
+</div>
+</h2>
+<p>This section explains the algorithm and software implemented on an Arduino-based robot that navigates an environment divided into a grid. The robot uses three VL53L0X laser sensors for distance measurements and a PCA9685-based servo driver for object retrieval. The system is designed to:</p>
+<ol>
+<li><strong>Explore a defined grid</strong>: The environment is partitioned into cells.</li>
+<li><strong>Detect objects</strong>: Classify objects as small (for retrieval), walls, or large obstacles.</li>
+<li><strong>Avoid collisions</strong>: Move in small increments with continuous sensor checks.</li>
+<li><strong>Plan paths</strong>: Greedily select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.</li>
+</ol>
+<hr>
+<h2 id="system-overview" >
+<div>
+    <a href="#system-overview">
+        #
+    </a>
+    System overview
+</div>
+</h2>
+<p>The Finite State Machine diagram of the system is represented in the following diagram</p>
+<pre class="mermaid">flowchart TD
+    A[Start] --> B[Initialize Sensors, Motors, and Grid]
+    B --> C[Scan Starting Cell]
+    C --> D[Find Closest Unvisited Cell]
+    D --> E[Plan Path to Target Cell]
+    E --> F[Move Forward Safely]
+    F --> G[Scan New Cell]
+    G --> H{Cell Status?}
+    H -- Visited/Obstacle --> I[Update Grid Status]
+    I --> D
+    H -- Small Object Detected --> J[Execute Retrieval Sequence]
+    J --> D
+    D --> K[All Cells Visited?]
+    K -- Yes --> L[Exploration Complete]
+</pre>
+
+<h2 id="algorithm-description" >
+<div>
+    <a href="#algorithm-description">
+        #
+    </a>
+    Algorithm description
+</div>
+</h2>
+<p>The environment is divided into a grid of squares defined by three parameters:</p>
+<ol>
+<li><strong>GRID_ROWS</strong>: Total rows in the grid.</li>
+<li><strong>GRID_COLS</strong>: Total columns in the grid.</li>
+<li><strong>CELL_SIZE_MM</strong>: Side of the size of the squares.</li>
+</ol>
+<p>The process is the following:</p>
+<ol>
+<li><strong>Initialization</strong>: The grid is initialized with all cells marked as unvisited. The starting cell is immediately marked as visited.</li>
+<li><strong>Target Selection</strong>: The robot continually searches for the closest unvisited cell that is not marked as an obstacle.</li>
+<li><strong>Path Planning and Movement</strong>: Once a target is selected, the robot uses a greedy approach to move horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.</li>
+</ol>
+<h2 id="sensor-based-object-detection" >
+<div>
+    <a href="#sensor-based-object-detection">
+        #
+    </a>
+    Sensor Based Object Detection
+</div>
+</h2>
+<p>The robot uses three VL53L0X sensors: left, center, and right. Based on their readings, the robot determines what is in front of it with the following rules:</p>
+<ul>
+<li><strong>Small Object</strong>: If only the central sensor returns a reading below 600 mm, a small object is detected. The robot then executes the retrieval sequence.</li>
+<li><strong>Wall</strong>: If the robot is on the perimeter of the grid (i.e., at the edge) and all three sensors read below 600 mm, the cell is treated as part of a wall.</li>
+<li><strong>Large Object</strong>: In interior grid cells (not on the perimeter), if all three sensors read below 600 mm, the cell is marked as containing a large object. The robot will avoid these cells.</li>
+</ul>
+<pre class="mermaid">flowchart TD
+    A[Read Sensors] --> B{Central sensor < 600?}
+    B -- Yes --> C{Left & Right sensors >= 600?}
+    C -- Yes --> D[Small Object Detected]
+    C -- No --> E[Continue Detection]
+    B -- No --> E
+    E --> F{Robot on Perimeter?}
+    F -- Yes --> G{All Sensors < 600?}
+    G -- Yes --> H[Wall Detected]
+    G -- No --> I[No Object]
+    F -- No --> J{All Sensors < 600?}
+    J -- Yes --> K[Large Object Detected]
+    J -- No --> I[No Object]
+</pre>
+
+<hr>
+<h2 id="collision-avoidance-and-safe-movement" >
+<div>
+    <a href="#collision-avoidance-and-safe-movement">
+        #
+    </a>
+    Collision Avoidance and Safe Movement
+</div>
+</h2>
+<p>To ensure collision avoidance, the robot moves forward in small increments (e.g., one-quarter of a cell) and checks sensor readings after each step. If a collision risk (wall or large object) is detected, the movement stops immediately and the current cell is marked as an obstacle.</p>
+<pre class="mermaid">sequenceDiagram
+    participant R as Robot
+    participant S as Sensors
+    participant M as Movement Controller
+    
+    R->>M: Begin safe forward movement
+    loop For each increment
+      M->>S: Read sensor values
+      S-->>M: Return sensor readings
+      alt Collision detected
+        M->>R: Stop movement and mark cell as obstacle
+      else No collision
+        M->>R: Continue movement
+      end
+    end
+</pre>
+
+<h2 id="navigation-strategy" >
+<div>
+    <a href="#navigation-strategy">
+        #
+    </a>
+    Navigation Strategy
+</div>
+</h2>
+<p>The navigation strategy employs a greedy algorithm that selects the nearest unvisited cell and then:</p>
+<ul>
+<li>Uses horizontal moves when only the X-axis movement is needed.</li>
+<li>Uses vertical moves when only the Y-axis movement is needed.</li>
+<li>Uses diagonal moves (if both axes require movement and the diagonal cell is free) by turning 45° right, moving forward, and then turning 45° left to reorient.</li>
+</ul>
+<h2 id="code-structure" >
+<div>
+    <a href="#code-structure">
+        #
+    </a>
+    Code Structure
+</div>
+</h2>
+<p>The source code is organized into the following sections:</p>
+<ol>
+<li><strong>Hardware Definitions &amp; Global Settings</strong>: Pin assignments, sensor calibration values, and grid parameters are declared here.</li>
+<li><strong>Movement Functions</strong>:
+<ul>
+<li>moveForwardSafe(): Moves the robot forward in small, safe increments with continuous collision checks.</li>
+<li>turnRight() and turnLeft(): Rotate the robot 90°.</li>
+<li>diagonalMove(): Combines turning and forward movement for a diagonal move.</li>
+</ul>
+</li>
+<li><strong>Sensor and Servo Functions</strong>:
+<ul>
+<li>Sensor initialization and setup.</li>
+<li>Functions to convert angles to PWM values and set servo positions.</li>
+<li>servoPick(): Executes the retrieval sequence for small objects.</li>
+</ul>
+</li>
+<li><strong>Grid-Based Exploration Functions</strong>:
+<ul>
+<li>Grid initialization and cell state updates</li>
+<li>Functions for scanning the current cell and determining the cell status.</li>
+<li>Functions to find and navigate to the closest unvisited cell.</li>
+</ul>
+</li>
+<li><strong>Main Loop</strong>: The main loop calls the exploration function until all free cells are visited, then halts further movement.</li>
+</ol>
+<h2 id="testing-and-results" >
+<div>
+    <a href="#testing-and-results">
+        #
+    </a>
+    Testing and Results
+</div>
+</h2>
+<p>The algorithm has been tested in indoor environments, where the robot demonstrated millimetric precision in its movements. Even without a closed-loop feedback system, the position remained accurate during all tests due to strong ground adherence. However, it is important to note that in the absence of real-time feedback, disturbances or motor slips during movement could lead to small but cumulative localization errors. Nonetheless, under all tested conditions the robot maintained strong traction and successfully navigated and updated its grid status as expected.</p>
+<h2 id="future-work" >
+<div>
+    <a href="#future-work">
+        #
+    </a>
+    Future Work
+</div>
+</h2>
+<p>Future enhancements may include:</p>
+<ul>
+<li>Advanced Path Planning: Implementing algorithms like A* for optimal path planning.</li>
+<li>Enhanced Sensor Fusion: Integrating additional sensors or filtering techniques to improve detection accuracy.</li>
+<li>Dynamic Re-Planning: Enabling real-time updates to the grid map to handle moving obstacles.</li>
+<li>User Interface: Developing visualization tools for real-time object detection and progress monitoring.</li>
+<li>Position Estimation Algorithms: Integrating SLAM techniques to continuously estimate the robot&rsquo;s position and compensate for movement inaccuracies.</li>
+</ul>
+<h2 id="conlcusion" >
+<div>
+    <a href="#conlcusion">
+        #
+    </a>
+    Conlcusion
+</div>
+</h2>
+<p>This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a greedy navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.</p>
+
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+        
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.0d57282e45c857ab017d29008f23c3cd0ae48daf43af0f71e2be3fa5a56e7171.js" type="text/javascript" charset="utf-8" integrity="sha256-DVcoLkXIV6sBfSkAjyPDzQrkja9Drw9x4r4/paVucXE="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+<script type="module">
+    function detectCurrentScheme3() {
+        const defaultTheme = "light";
+        if (localStorage !== null && localStorage.getItem("user-color-scheme")) {
+            return localStorage.getItem("user-color-scheme");
+        }
+        if (defaultTheme === "dark" || defaultTheme === "light") {
+            return defaultTheme;
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    window.mermaid = mermaid;
+    window.initMermaid()
+    document.body.dispatchEvent(new CustomEvent(detectCurrentScheme3() + "-theme-set"));
+</script>
+
+    
+    
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Silvia Festa,  2025
+            
+        </div>
+        <div style="display:flex; align-items: center; gap:4px">
+
+            
+            
+
+            
+            
+            
+            
+
+            
+            
+
+            
+        </div>
+        
+            <div>
+                Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            </div>
+        
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me">map[name:Silvia Festa]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

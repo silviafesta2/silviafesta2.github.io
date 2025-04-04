@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+        <loc>http://localhost:1313/trash_collector_robot/</loc>
+      </url><url>
+        <loc>http://localhost:1313/categories/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/databases/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/harvard/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/java-programming/</loc>
+      </url><url>
+        <loc>http://localhost:1313/sudoku/</loc>
+      </url><url>
+        <loc>http://localhost:1313/movie-finder/</loc>
+      </url><url>
+        <loc>http://localhost:1313/basi_di_dati/</loc>
+      </url><url>
+        <loc>http://localhost:1313/sudoku/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/operations-research/</loc>
+      </url><url>
+        <loc>http://localhost:1313/posts/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/project/</loc>
+      </url><url>
+        <loc>http://localhost:1313/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/universit%C3%A0-di-pisa/</loc>
+      </url><url>
+        <loc>http://localhost:1313/tags/web-design/</loc>
+      </url>
+</urlset>
