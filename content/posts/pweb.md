@@ -62,9 +62,9 @@ These transformations greatly expand puzzle variety without compromising the uni
 ## Dynamically Generated Puzzles
 Dynamic puzzle generation is achieved through iterative application of Sudoku-solving rules:
 - Initially, an incomplete Sudoku board is generated.
-- The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints) and advanced techniques (hidden pairs/triples, intersection removals).
+- The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints, hidden pairs/triplets) and advanced techniques.
 - If the solver cannot resolve the puzzle uniquely using rule-based approaches, an additional number is placed strategically, and the solving process is repeated.
-- Should the puzzle generation fail (no solutions or multiple solutions), the puzzle generation restarts completely with a new initial board.
+
 
 Auxiliary data structures comprehend arrays 9x9x9 for every cell and arrays for every row, column and block in order to store are the possiblities for each specific cell.
 
@@ -120,3 +120,6 @@ In this case the function `numero_inseribile()` checks, if by applying classical
 
 # Conclusion
 This documentation provides an extensive overview and understanding of the Sudoku Web Application project, its internal mechanisms, and the user experience delivered through meticulous design and engineering.
+
+
+For full code reference, [click here](https://github.com/silviafesta2/pweb).
