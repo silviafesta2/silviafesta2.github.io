@@ -1,6 +1,6 @@
 +++
 title = "MATLAB library for Operations Research"
-url = "sudoku"
+url = "operations-research"
 summary = "Self Implemented Simplex, Gomory Algorithm, Branch & Bound and Non Linear Method as Gradient Descent"
 author = "silviafesta2"
 draft = false

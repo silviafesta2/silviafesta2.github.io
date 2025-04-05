@@ -1,6 +1,6 @@
 +++
 title = "MovieFinder, multithread app for cinema managing"
-url = "movie-finder"
+url = "java-programming"
 summary = "Multi-Threaded Java Client-Server application, handling concurrent online cinema operations efficiently"
 author = "silviafesta2"
 draft = false
