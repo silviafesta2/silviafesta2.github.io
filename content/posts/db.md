@@ -12,22 +12,22 @@ featured = true
 +++
 
 # Project Specification
-This project involves the design and implementation of a relational database using Oracle MySQL to support a Smart Buildings system, which manages construction, renovation, and structural monitoring of buildings. The system stores detailed architectural and geographic data, tracks construction progress and materials, and integrates sensor data for real-time safety assessment and predictive maintenance. Advanced data analytics features are required to evaluate structural risks, estimate damage after disasters, and recommend interventions. The database supports entity-relationship modeling, functional dependency analysis, and performance optimization through redundancy and normalization strategies.
+This project involves the design and implementation of a relational database using Oracle MySQL to support a Smart Buildings system, which manages construction, renovation, and structural monitoring of buildings. The system stores detailed architectural and geographic data, tracks construction progress and materials, and integrates sensor data for real-time safety assessment and predictive maintenance. Advanced data analytics features are required to evaluate structural risks, estimate damage after disasters, and recommend interventions. This documentation contains entity-relationship modeling, functional dependency analysis, and performance optimization through redundancy and normalization strategies.
 
 > 📄 [click here](/doc/Progetto-A.A.21-22.pdf) to download the project specification
 
 # Project Objective
 The goal is to design and implement a relational database system capable of:
-- Storing detailed information about buildings, rooms, sensors, actuators, and occupants.
-- Efficiently handling real-time sensor data and control signals for actuators.
-- Providing support for complex queries to assist in building automation and management decisions.
+- Storing detailed information about buildings, rooms, sensors, and actuators.
+- Efficiently handling real-time sensor data.
+- Providing support for complex queries to assist in building management decisions.
 
 # Requirement Analysis
-The requirements analysis phase was divided into several sub-areas to identify the specific data and functionalities required by the database system:
+The database was logically divided into three different parts:
 
 ## General Area
-In this area, information was gathered about the geographic location, building structures, and associated risks:
-- **Geographic and Structural Information**: Buildings are identified by their geographic locations, types (single-family house, condominium, etc.), and detailed topologies. Each building comprises multiple floors, and each floor has a specific floor plan represented by polygons.
+This area is contains general informations about buildings:
+- **Geographic and Structural Information**: Buildings are identified by their geographic locations, types (single-family house, apartment building, etc.), and detailed topologies. Each building is made of multiple floors, and each floor has a specific floor plan represented by polygons.
 - **Rooms**: Each floor is subdivided into rooms, each with maximum width, length, and height. Rooms can have irregular shapes and serve various functions (bedrooms, bathrooms, storerooms).
 - **Access Points**: Each room has access points such as doors, arches, or windowed openings. Details about these openings (dimensions, orientation) are essential for the database.
 - **Risk Assessment**: Each geographic area is subject to risks like seismic and hydrogeological hazards. Risk coefficients for each area are dynamic, and their historical values must be stored for future analysis.
@@ -64,7 +64,7 @@ At the conclusion of this phase, a comprehensive glossary was developed. This gl
 ---
 
 # Conceptual Design: Entity-Relationship Diagrams
-The conceptual design phase consists of a thorough modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.
+The conceptual design phase consists of a complete modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.
 
 ## Functional Areas Covered
 This phase includes the design of ER models for four primary areas:
@@ -255,7 +255,7 @@ The logical model respects normalization principles and integrates all integrity
 The General Area concerns the physical structure of buildings, rooms, walls, and access points. Below is a sample of the main tables:
 
 ### Tables:
-```sql
+
 Edificio(IdEdificio, AnnoCostruzione, Citta, Civico, Via, Latitudine, Longitudine)
 
 Piano(NumeroPiano, IdEdificio, IdParte)
@@ -465,4 +465,7 @@ The result ranges from **0 (critical)** to **100 (ideal)**, enabling **prioritiz
 
 ---
 ## Download documentation
-> 📄 [click here](/doc/DB.pdf) to download the final documentation
+> 📄 [click here](/doc/DB.pdf) to download the complete documentation
+
+## Code
+> 💻 [click here](https://github.com/silviafesta2/SmartBuildings) to see the code
