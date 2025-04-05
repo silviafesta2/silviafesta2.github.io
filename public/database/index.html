@@ -394,7 +394,34 @@
 
 
 
+    
+    
 
+
+
+
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -453,6 +480,76 @@
 
   
   
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-area">General Area</a></li>
+    <li><a href="#construction-area">Construction Area</a></li>
+    <li><a href="#monitoring-area">Monitoring Area</a></li>
+    <li><a href="#risk-analysis-and-damage-monitoring-area">Risk Analysis and Damage Monitoring Area</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#functional-areas-covered">Functional Areas Covered</a></li>
+    <li><a href="#entity-data-dictionary">Entity Data Dictionary</a></li>
+    <li><a href="#association-data-dictionary">Association Data Dictionary</a></li>
+    <li><a href="#constraint-documentation">Constraint Documentation</a></li>
+    <li><a href="#example-of-er-scheme-documentation-for-a-single-entity">Example of ER-scheme documentation for a single entity:</a></li>
+    <li><a href="#full-er-scheme">Full ER-scheme</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#elimination-of-generalizations">Elimination of Generalizations</a></li>
+    <li><a href="#elimination-of-multivalued-attributes">Elimination of Multivalued Attributes</a></li>
+    <li><a href="#elimination-of-composite-attributes">Elimination of Composite Attributes</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#volume-table">Volume Table</a></li>
+    <li><a href="#example-operation-reading-the-topology-of-a-building">Example Operation: Reading the Topology of a Building</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#relevant-portion-of-the-er-diagram">Relevant Portion of the ER Diagram</a></li>
+        <li><a href="#volume-table-for-the-operation">Volume Table for the Operation</a></li>
+      </ul>
+    </li>
+    <li><a href="#access-table">Access Table</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#example-logical-model-general-area">Example Logical Model: General Area</a>
+      <ul>
+        <li><a href="#tables">Tables:</a></li>
+        <li><a href="#referential-integrity-constraints">Referential Integrity Constraints</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#example-functional-dependencies-on-dipendentematricola-nome-cognome-codfiscale">Example: Functional Dependencies on <code>Dipendente(Matricola, Nome, Cognome, CodFiscale)</code></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#building-status-stato-delledificio">Building Status (Stato dell’Edificio)</a>
+      <ul>
+        <li><a href="#damage-danni">Damage (<code>Danni</code>)</a></li>
+        <li><a href="#unresolved-alerts-alertnongestiti">Unresolved Alerts (<code>AlertNonGestiti</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#waste-statosprechi">Waste (<code>StatoSprechi</code>)</a>
+      <ul>
+        <li></li>
+        <li><a href="#final-aggregated-score-statogenerale">Final Aggregated Score: <code>StatoGenerale</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#download-documentation">Download documentation</a></li>
+  </ul>
+</nav></div>
+  </details>
+  
 
 
 
@@ -475,9 +572,904 @@
 </script>
 
         <div class="content e-content">
-            <blockquote>
-<p>[!note]
-This is just a note</p></blockquote>
+            <h1 id="project-specification" >
+<div>
+    <a href="#project-specification">
+        ##
+    </a>
+    Project Specification
+</div>
+</h1>
+<p>This project involves the design and implementation of a relational database using Oracle MySQL to support a Smart Buildings system, which manages construction, renovation, and structural monitoring of buildings. The system stores detailed architectural and geographic data, tracks construction progress and materials, and integrates sensor data for real-time safety assessment and predictive maintenance. Advanced data analytics features are required to evaluate structural risks, estimate damage after disasters, and recommend interventions. The database supports entity-relationship modeling, functional dependency analysis, and performance optimization through redundancy and normalization strategies.</p>
+<blockquote>
+<p>📄 <a href="/doc/Progetto-A.A.21-22.pdf">click here</a> to download the project specification</p></blockquote>
+<h1 id="project-objective" >
+<div>
+    <a href="#project-objective">
+        ##
+    </a>
+    Project Objective
+</div>
+</h1>
+<p>The goal is to design and implement a relational database system capable of:</p>
+<ul>
+<li>Storing detailed information about buildings, rooms, sensors, actuators, and occupants.</li>
+<li>Efficiently handling real-time sensor data and control signals for actuators.</li>
+<li>Providing support for complex queries to assist in building automation and management decisions.</li>
+</ul>
+<h1 id="requirement-analysis" >
+<div>
+    <a href="#requirement-analysis">
+        ##
+    </a>
+    Requirement Analysis
+</div>
+</h1>
+<p>The requirements analysis phase was divided into several sub-areas to identify the specific data and functionalities required by the database system:</p>
+<h2 id="general-area" >
+<div>
+    <a href="#general-area">
+        #
+    </a>
+    General Area
+</div>
+</h2>
+<p>In this area, information was gathered about the geographic location, building structures, and associated risks:</p>
+<ul>
+<li><strong>Geographic and Structural Information</strong>: Buildings are identified by their geographic locations, types (single-family house, condominium, etc.), and detailed topologies. Each building comprises multiple floors, and each floor has a specific floor plan represented by polygons.</li>
+<li><strong>Rooms</strong>: Each floor is subdivided into rooms, each with maximum width, length, and height. Rooms can have irregular shapes and serve various functions (bedrooms, bathrooms, storerooms).</li>
+<li><strong>Access Points</strong>: Each room has access points such as doors, arches, or windowed openings. Details about these openings (dimensions, orientation) are essential for the database.</li>
+<li><strong>Risk Assessment</strong>: Each geographic area is subject to risks like seismic and hydrogeological hazards. Risk coefficients for each area are dynamic, and their historical values must be stored for future analysis.</li>
+</ul>
+<h2 id="construction-area" >
+<div>
+    <a href="#construction-area">
+        #
+    </a>
+    Construction Area
+</div>
+</h2>
+<p>This section details construction projects, materials, and progression:</p>
+<ul>
+<li><strong>Building Projects</strong>: Projects include new constructions and renovations, each with unique codes, presentation, approval, and estimated completion dates.</li>
+<li><strong>Construction Materials</strong>: Detailed information about materials (bricks, plaster, tiles, stones) used for construction or decorative purposes, their types, dimensions, costs, and suppliers.</li>
+<li><strong>Progression and Personnel Management</strong>: Each construction project has defined stages of progress, recording timelines, involved workforces, assigned responsibilities, and workforce management.</li>
+</ul>
+<h2 id="monitoring-area" >
+<div>
+    <a href="#monitoring-area">
+        #
+    </a>
+    Monitoring Area
+</div>
+</h2>
+<p>Dedicated to dynamic building monitoring:</p>
+<ul>
+<li><strong>Sensors and Measurements</strong>: Smart buildings are equipped with sensors measuring parameters such as temperature, humidity, precipitation, accelerations, angular velocities, and structural displacements.</li>
+<li><strong>Data Storage</strong>: Measurements are continuously stored with timestamps, associated with alerts triggered upon exceeding predefined thresholds, which are critical for structural safety assessment.</li>
+</ul>
+<h2 id="risk-analysis-and-damage-monitoring-area" >
+<div>
+    <a href="#risk-analysis-and-damage-monitoring-area">
+        #
+    </a>
+    Risk Analysis and Damage Monitoring Area
+</div>
+</h2>
+<p>This area focuses on risk assessment and damage management:</p>
+<ul>
+<li><strong>Building Condition Monitoring</strong>: The state of each building is continuously assessed based on sensor data, historical trends, and specific risk thresholds.</li>
+<li><strong>Calamity Management</strong>: Information regarding calamities (type, date, severity, and geographical impact) is recorded, including automatic severity assessment based on sensor data.</li>
+<li><strong>Damage Recording</strong>: Post-event damage assessments are stored, detailing affected areas, types of damage, severity, and the necessary interventions or sensor installations for continuous monitoring.</li>
+</ul>
+<hr>
+<p>At the conclusion of this phase, a comprehensive glossary was developed. This glossary contains all identified terms and potential entities along with their precise definitions, in order to eliminate ambiguity in the following stages of documentation and design. Each term entry includes synonyms and relational links to other relevant concepts, which help inform the expected attributes of corresponding entities. The glossary is structured as a table with the following columns: Term, Description, Synonyms, and Links.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Description</th>
+          <th>Synonyms</th>
+          <th>Links</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Intonaco</td>
+          <td>Wall coating material with both protective and aesthetic purposes, made of a hardening mortar with sand.</td>
+          <td>parete, materiale</td>
+          <td>parete, materiale</td>
+      </tr>
+      <tr>
+          <td>Mattone</td>
+          <td>Brick made of clay or concrete, usually parallelepiped-shaped, solid or hollow, used in masonry work.</td>
+          <td>muro, parete, materiale</td>
+          <td>muro, parete, materiale, alveolatura</td>
+      </tr>
+      <tr>
+          <td>Alveolatura di mattone</td>
+          <td>Internal cavity pattern in bricks, which may be empty or filled with insulating material.</td>
+          <td>alveolatura</td>
+          <td>mattone</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="conceptual-design-entity-relationship-diagrams" >
+<div>
+    <a href="#conceptual-design-entity-relationship-diagrams">
+        ##
+    </a>
+    Conceptual Design: Entity-Relationship Diagrams
+</div>
+</h1>
+<p>The conceptual design phase consists of a thorough modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.</p>
+<h2 id="functional-areas-covered" >
+<div>
+    <a href="#functional-areas-covered">
+        #
+    </a>
+    Functional Areas Covered
+</div>
+</h2>
+<p>This phase includes the design of ER models for four primary areas:</p>
+<ul>
+<li>General Area</li>
+<li>Construction Area</li>
+<li>Monitoring Area</li>
+<li>Risk Analysis and Damage Monitoring Area</li>
+</ul>
+<p>Each of these areas has been analyzed independently and documented with dedicated resources, as outlined below.</p>
+<h2 id="entity-data-dictionary" >
+<div>
+    <a href="#entity-data-dictionary">
+        #
+    </a>
+    Entity Data Dictionary
+</div>
+</h2>
+<p>For each area, a detailed Entity Data Dictionary was created. This consists of a tabular summary where each row defines an entity and includes:</p>
+<ul>
+<li><strong>Entity Name</strong>: the conceptual object modeled (e.g., Building, Floor, Wall, Sensor).</li>
+<li><strong>Description</strong>: a concise explanation of the entity’s real-world meaning.</li>
+<li><strong>Attributes</strong>: a list of fields with their respective data types (e.g., INT, FLOAT, VARCHAR(50)).</li>
+<li><strong>Identifier</strong>: the primary key(s) uniquely identifying each record.</li>
+</ul>
+<p>This dictionary facilitates clarity during database implementation and ensures all expected attributes are well-defined from the start.</p>
+<h2 id="association-data-dictionary" >
+<div>
+    <a href="#association-data-dictionary">
+        #
+    </a>
+    Association Data Dictionary
+</div>
+</h2>
+<p>Complementing the entities, the Association Data Dictionary lists all relationships between entities. For each association, the following details are documented:</p>
+<ul>
+<li><strong>Name of the Relationship</strong></li>
+<li><strong>Description</strong></li>
+<li><strong>Participating Entities</strong></li>
+<li><strong>Attributes</strong> (if the relationship is not binary or has its own properties)
+This helps capture the logical structure of the database, ensuring correct cardinalities, join conditions, and additional properties of the associations.</li>
+</ul>
+<h2 id="constraint-documentation" >
+<div>
+    <a href="#constraint-documentation">
+        #
+    </a>
+    Constraint Documentation
+</div>
+</h2>
+<p>To enforce data integrity beyond what the ER diagram can express, a full set of constraints and business rules was specified for each area. These include:</p>
+<ul>
+<li><strong>Business Rules</strong>: Constraints based on real-world logic (e.g., a building must have at least one floor).</li>
+<li><strong>Tuple Constraints</strong>: Conditions on single rows (e.g., wall thickness depends on whether it’s a load-bearing wall).</li>
+<li><strong>Inter-relational Constraints</strong>: Rules involving multiple entities or relationships (e.g., a room must belong to a floor, which must belong to a building).</li>
+</ul>
+<p>These constraints will later guide both the logical schema definition and physical database implementation to maintain consistency and accuracy of the data.</p>
+<hr>
+<h2 id="example-of-er-scheme-documentation-for-a-single-entity" >
+<div>
+    <a href="#example-of-er-scheme-documentation-for-a-single-entity">
+        #
+    </a>
+    Example of ER-scheme documentation for a single entity:
+</div>
+</h2>
+<p>An example of documentation for a single Entity (copied from the original documentation, hence in Italian).
+<img src="/images/Edificio.png" alt="edificio"></p>
+<br>
+<table>
+  <thead>
+      <tr>
+          <th>Entity</th>
+          <th>Description</th>
+          <th>Attributes</th>
+          <th>Identifier</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edificio</td>
+          <td>Mansory construction intended for residential or specific uses</td>
+          <td>IdEdificio (INT), AnnoCostruzione (DATE), Tipologia (VARCHAR(50)), Citta (VARCHAR(50)), Civico (INT), Via (VARCHAR(50))</td>
+          <td>IdEdificio</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<p>Un <code>Edificio</code> e&rsquo; identificato per mezzo di un ID progressivo (“IdEdificio”) ed e&rsquo; caratterizzato
+da un indirizzo (”Indirizzo”), una tipologia (“Tipologia”) e dall’anno di costruzione
+(“AnnoCostruzione”).</p>
+<ul>
+<li>“Indirizzo” e&rsquo; un attributo composto formato da “Citta”, “Via” e “Civico” che permette di
+individuare in modo univoco la collocazione di un edificio all’interno della propria area
+geografica. E’ possibile che in aree geografiche diverse gli indirizzi si ripetano, pertanto
+“Indirizzo” (senza l’aggiunta di altri attributi) non puo&rsquo; essere una chiave di “Edificio”,
+l’indirizzo risulta invece essere unico all’interno di ciascuna area geografica esiste quindi un
+vincolo che impedisce l’inserimento di edifici con stesso indirizzo all’interno della medesima
+area geografica. Per l’identificazione di “Edificio” e&rsquo; possibile scegliere tra un’identificazione
+interna (per mezzo di un id progressivo) ed un’identificazione esterna (usando una chiave
+esterna formata dall’attributo composto “Indirizzo” e dalle “Coordinate” dell’area
+geografica all’interno della quale l’edificio ha sede). E’ stato scelto di adottare la prima
+soluzione in quanto essa rende l’identificazione piu&rsquo; immediata (la prima soluzione richiede
+un unico attributo come chiave primaria mentre la seconda soluzione ne richiederebbe 5 di
+cui 2 esterni).</li>
+<li>“IdEdificio” e&rsquo; un identificatore numerico auto incrementale.</li>
+<li>“Citta” e&rsquo; un attributo di tipo varchar(50) senza vincoli di dominio che indica la citta'
+all’interno della quale l’edificio e&rsquo; situato.</li>
+<li>“Via” e&rsquo; un attributo di tipo varchar(70) senza vincoli di dominio.</li>
+<li>“Civico” e&rsquo; un attributo di tipo int, questo puo&rsquo; assumere solo valori positivi.</li>
+<li>“AnnoCostruzione” e&rsquo; un attributo di tipo int che indica l’anno in cui l’edificio e&rsquo; stato
+completato (non quello in cui sono iniziati i lavori di costruzione), questo puo&rsquo; assumere
+valore null nel caso in cui l’edificio non sia ancora esistente (lavori di costruzione non
+ancora iniziati oppure edificio in fase di costruzione). La presenza dell’attributo</li>
+<li>“AnnoCostruzione” permette sia di distinguere fra edifici esistenti e non (come richiesto da
+specifiche) sia di condurre analisi statistiche sul deterioramento degli edifici nel tempo.
+L’attributo “AnnoCostruzione” non e&rsquo; ridondante in quanto, se non fosse presente, sarebbe
+possibile stimare solamente l’anno di costruzione di edifici interamente costruiti da Smart
+Buildings ma non di edifici presi in carico dall’azienda per ristrutturazioni (saranno
+ovviamente necessari controlli di consistenza per quanto riguarda gli edifici interamente
+costruiti da Smart Buildings). Affinch´e le date di completamento degli edifici
+(AnnoCostruzione) non siano date stimate nel futuro e&rsquo; previsto un vincolo che impedisce
+l’inserimento di interi maggiori del valore dell’anno in corso al momento dell’inserimento.</li>
+<li>“Tipologia” e&rsquo; un attributo di tipo varchar(50) che permette di classificare un fabbricato in
+base alla presenza di determinate caratteristiche dimensionali, funzionali ed organizzative,
+29
+per non limitare la possibilita&rsquo; di definire nuove tipologie di edificio ritenute di interesse
+dall’azienda non sono stati previsti vincoli sul dominio di questo attributo; esistono
+tuttavia alcune categorie consigliate di cui riportiamo le caratteristiche distintive:
+<ul>
+<li><strong>Casa unifamiliare</strong>: edificio caratterizzato dalla presenza di una singola unita'
+abitativa.</li>
+<li><strong>Condominio</strong>: edificio caratterizzato dalla presenza di piu unita&rsquo; immobiliari con
+caratteristiche comuni come la pianta o la suddivisione in vani di un piano.</li>
+<li><strong>Fabbricato industriale</strong>: edificio solitamente caratterizzato da grandi dimensioni e
+ampi vani modulabili.</li>
+<li><strong>Edificio storico</strong>: edificio dall’importante valore storico-culturale, e&rsquo; solitamente
+caratterizzato da una grande complessita&rsquo; e dalla numerosa presenza di dettagli
+architettonici.</li>
+</ul>
+</li>
+</ul>
+<h2 id="full-er-scheme" >
+<div>
+    <a href="#full-er-scheme">
+        #
+    </a>
+    Full ER-scheme
+</div>
+</h2>
+<p><img src="/images/ProgettazioneLogica.png" alt="schema-ER"></p>
+<h1 id="er-diagram-restructuring" >
+<div>
+    <a href="#er-diagram-restructuring">
+        ##
+    </a>
+    ER Diagram Restructuring
+</div>
+</h1>
+<p>After the conceptual modeling, it became necessary to refine the ER diagrams by restructuring them to improve clarity and align with the relational model. The restructuring focused on simplifying the diagrams and resolving modeling complexities that are not directly supported in relational schema translation.</p>
+<p>This restructuring phase consists of three primary operations:</p>
+<h2 id="elimination-of-generalizations" >
+<div>
+    <a href="#elimination-of-generalizations">
+        #
+    </a>
+    Elimination of Generalizations
+</div>
+</h2>
+<p>Generalizations were removed by replacing them with equivalent flattened structures. For each superclass-subclass relationship, two common strategies were considered:</p>
+<ul>
+<li><strong>Option 1</strong>: Single Table Inheritance
+All attributes of the superclass and subclass are merged into a single entity. A discriminator attribute is used to indicate the subtype.</li>
+<li><strong>Option 2</strong>: Class Table Inheritance
+A table is created for the superclass and each subclass, connected via foreign keys.</li>
+</ul>
+<p>Examples:</p>
+<p>In the General Area, the entity <code>Apertura</code> was generalized into sub-entities <code>Porta</code>, <code>Finestra</code>, <code>Arco</code>, and <code>Portafinestra</code>. These were flattened into a single table with conditional attributes and a type indicator field.</p>
+<p>In the Construction Area, <code>ParteEdificio</code> and its specializations (e.g., <code>Parete</code>, <code>Pavimento</code>, <code>Solaio</code>) were denormalized similarly to allow direct referencing in relational schemas.</p>
+<h2 id="elimination-of-multivalued-attributes" >
+<div>
+    <a href="#elimination-of-multivalued-attributes">
+        #
+    </a>
+    Elimination of Multivalued Attributes
+</div>
+</h2>
+<p>Attributes that could contain multiple values for a single entity instance were extracted into separate entities with one-to-many relationships. This process prevents the violation of first normal form.</p>
+<p>Example:</p>
+<p>The multivalued attribute <code>Funzione</code> in the <code>Vano</code> entity was extracted into a separate entity <code>FunzioneVano</code>, where each row represents one function of a room.</p>
+<h2 id="elimination-of-composite-attributes" >
+<div>
+    <a href="#elimination-of-composite-attributes">
+        #
+    </a>
+    Elimination of Composite Attributes
+</div>
+</h2>
+<p>Composite attributes were replaced with their atomic components to comply with relational modeling principles.</p>
+<p>Example:</p>
+<p>The composite attribute <code>Indirizzo</code> of <code>Edificio</code> (consisting of <code>Via</code>, <code>Civico</code>, <code>Citta</code>) was split into individual atomic attributes, while maintaining a unique constraint on the combination to ensure address uniqueness per area.</p>
+<h1 id="identification-of-interesting-data-operations" >
+<div>
+    <a href="#identification-of-interesting-data-operations">
+        ##
+    </a>
+    Identification of Interesting Data Operations
+</div>
+</h1>
+<p>This section defines a set of representative operations that the system must support efficiently. These operations simulate real-world use cases and guided the design of indexes, optimization strategies, and the restructuring of the ER diagram to meet expected performance.</p>
+<p>Each operation is analyzed in terms of:</p>
+<ul>
+<li>A <strong>description</strong> of its business purpose</li>
+<li>The <strong>portion of the ER diagram</strong> it involves</li>
+<li>A <strong>volume table</strong> estimating data size and query frequency</li>
+<li>An <strong>access table</strong> detailing involved attributes and relationships</li>
+<li>Any <strong>redundancy</strong> introduced to improve performance</li>
+</ul>
+<h2 id="volume-table" >
+<div>
+    <a href="#volume-table">
+        #
+    </a>
+    Volume Table
+</div>
+</h2>
+<p>This table summarizes the expected data volume and query frequency for each main entity and operation. It helps in anticipating indexing needs and performance bottlenecks.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Type</th>
+          <th>Volume</th>
+          <th>Reasoning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edificio</td>
+          <td>Entità</td>
+          <td>50</td>
+          <td>Assumed as a base hypothesis</td>
+      </tr>
+      <tr>
+          <td>Piano</td>
+          <td>Entità</td>
+          <td>150</td>
+          <td>3 floors per building on average</td>
+      </tr>
+      <tr>
+          <td>Vano</td>
+          <td>Entità</td>
+          <td>1500</td>
+          <td>10 rooms per floor on average</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="example-operation-reading-the-topology-of-a-building" >
+<div>
+    <a href="#example-operation-reading-the-topology-of-a-building">
+        #
+    </a>
+    Example Operation: Reading the Topology of a Building
+</div>
+</h2>
+<h3 id="description" >
+<div>
+    <a href="#description">
+        ##
+    </a>
+    Description
+</div>
+</h3>
+<p>This operation allows querying the structural layout of a specific building, including the list of floors, rooms per floor, and their respective dimensions and access points.</p>
+<h3 id="relevant-portion-of-the-er-diagram" >
+<div>
+    <a href="#relevant-portion-of-the-er-diagram">
+        ##
+    </a>
+    Relevant Portion of the ER Diagram
+</div>
+</h3>
+<ul>
+<li>Entities: <code>Edificio</code>, <code>Piano</code>, <code>Vano</code>, <code>Parete</code>, <code>Apertura</code></li>
+<li>Associations: <code>CollocazionePiano</code>, <code>CollocazioneVano</code>, <code>DelimitazioneVano</code></li>
+</ul>
+<h3 id="volume-table-for-the-operation" >
+<div>
+    <a href="#volume-table-for-the-operation">
+        ##
+    </a>
+    Volume Table for the Operation
+</div>
+</h3>
+<ul>
+<li>Buildings: 10,000</li>
+<li>Average floors/building: 4</li>
+<li>Rooms per floor: 5</li>
+<li>Queries/day: ~500</li>
+</ul>
+<h2 id="access-table" >
+<div>
+    <a href="#access-table">
+        #
+    </a>
+    Access Table
+</div>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Entity</th>
+          <th>Access Type</th>
+          <th>Attributes Needed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edificio</td>
+          <td>Read</td>
+          <td>IdEdificio, Tipologia</td>
+      </tr>
+      <tr>
+          <td>Piano</td>
+          <td>Read</td>
+          <td>NumeroPiano</td>
+      </tr>
+      <tr>
+          <td>Vano</td>
+          <td>Read</td>
+          <td>Dimensioni, Funzione</td>
+      </tr>
+      <tr>
+          <td>Apertura</td>
+          <td>Read</td>
+          <td>Tipologia, Altezza, Larghezza</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="logical-model" >
+<div>
+    <a href="#logical-model">
+        ##
+    </a>
+    Logical Model
+</div>
+</h1>
+<p>This phase consists of translating the conceptual design into the logical relational model. For each area of the system, entities, relationships, and constraints previously defined in the ER diagram are mapped to relational tables with primary and foreign keys.</p>
+<p>The logical model respects normalization principles and integrates all integrity constraints (referential, domain, and tuple-level) derived during earlier design phases.</p>
+<h2 id="example-logical-model-general-area" >
+<div>
+    <a href="#example-logical-model-general-area">
+        #
+    </a>
+    Example Logical Model: General Area
+</div>
+</h2>
+<p>The General Area concerns the physical structure of buildings, rooms, walls, and access points. Below is a sample of the main tables:</p>
+<h3 id="tables" >
+<div>
+    <a href="#tables">
+        ##
+    </a>
+    Tables:
+</div>
+</h3>
+<div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e06c75">Edificio</span>(<span style="color:#e06c75">IdEdificio</span>, <span style="color:#e06c75">AnnoCostruzione</span>, <span style="color:#e06c75">Citta</span>, <span style="color:#e06c75">Civico</span>, <span style="color:#e06c75">Via</span>, <span style="color:#e06c75">Latitudine</span>, <span style="color:#e06c75">Longitudine</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Piano</span>(<span style="color:#e06c75">NumeroPiano</span>, <span style="color:#e06c75">IdEdificio</span>, <span style="color:#e06c75">IdParte</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Vano</span>(<span style="color:#e06c75">IdVano</span>, <span style="color:#e06c75">NumeroPiano</span>, <span style="color:#e06c75">IdEdificio</span>, <span style="color:#e06c75">Superficie</span>, <span style="color:#e06c75">LarghezzaMassima</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">LunghezzaMassima</span>, <span style="color:#e06c75">AltezzaMassima</span>, <span style="color:#e06c75">AltezzaMinima</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">AdibizioneVano</span>(<span style="color:#e06c75">IdVano</span>, <span style="color:#e06c75">NomeFunzione</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Funzione</span>(<span style="color:#e06c75">NomeFunzione</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">AccessoInternoEsterno</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">IdVano</span>, <span style="color:#e06c75">IdParte</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">AccessoInternoInterno</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">VanoIdMaggiore</span>, <span style="color:#e06c75">VanoIdMinore</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">AccessoProprieta</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">IdVano</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Apertura</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">IdParte</span>, <span style="color:#e06c75">Larghezza</span>, <span style="color:#e06c75">Altezza</span>, <span style="color:#e06c75">Tipologia</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">PortaFinestra</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">IsolamentoTermico</span>, <span style="color:#e06c75">IsolamentoAcustico</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Porta</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">Materiale</span>, <span style="color:#e06c75">Colore</span>, <span style="color:#e06c75">Serratura</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Arco</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">Raggio</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Finestra</span>(<span style="color:#e06c75">IdApertura</span>, <span style="color:#e06c75">IsolamentoAcustico</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">IsolamentoTermico</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="referential-integrity-constraints" >
+<div>
+    <a href="#referential-integrity-constraints">
+        ##
+    </a>
+    Referential Integrity Constraints
+</div>
+</h3>
+<ul>
+<li>
+<p>(Latitudine, Longitudine) of Edificio → AreaGeografica(Latitudine, Longitudine)</p>
+</li>
+<li>
+<p>Piano.IdEdificio → Edificio(IdEdificio)</p>
+</li>
+<li>
+<p>Piano.IdParte → Solaio(IdParte)</p>
+</li>
+<li>
+<p>(NumeroPiano, IdEdificio) of Vano → Piano(NumeroPiano, IdEdificio)</p>
+</li>
+<li>
+<p>AdibizioneVano.IdVano → Vano(IdVano)</p>
+</li>
+<li>
+<p>AdibizioneVano.NomeFunzione → Funzione(NomeFunzione)</p>
+</li>
+<li>
+<p>AccessoInternoEsterno.IdVano → Vano(IdVano)</p>
+</li>
+<li>
+<p>AccessoInternoEsterno.IdParte → ParteEsterna(IdParte)</p>
+</li>
+<li>
+<p>AccessoInternoEsterno.IdApertura → Apertura(IdApertura)</p>
+</li>
+<li>
+<p>AccessoInternoInterno.VanoIdMinore → Vano(IdVano)</p>
+</li>
+<li>
+<p>AccessoInternoInterno.VanoIdMaggiore → Vano(IdVano)</p>
+</li>
+<li>
+<p>AccessoInternoInterno.IdApertura → Apertura(IdApertura)</p>
+</li>
+<li>
+<p>AccessoProprieta.IdVano → Vano(IdVano)</p>
+</li>
+<li>
+<p>AccessoProprieta.IdApertura → Apertura(IdApertura)</p>
+</li>
+<li>
+<p>Apertura.IdParte → Muro(IdParte)</p>
+</li>
+<li>
+<p>PortaFinestra.IdApertura, Porta.IdApertura, Arco.IdApertura, Finestra.IdApertura → Apertura(IdApertura)</p>
+</li>
+</ul>
+<h1 id="functional-dependency-analysis" >
+<div>
+    <a href="#functional-dependency-analysis">
+        ##
+    </a>
+    Functional Dependency Analysis
+</div>
+</h1>
+<p>The purpose of this phase is to identify the functional dependencies (FDs) that exist between attributes in each relation of the logical model. This analysis is fundamental for validating the quality of the schema and for guiding normalization or denormalization decisions where needed. In this case, apart from redundancies introduces to have better performances, the <strong>Third Normal Form</strong> should hold.</p>
+<h2 id="methodology" >
+<div>
+    <a href="#methodology">
+        #
+    </a>
+    Methodology
+</div>
+</h2>
+<p>A complete analysis of all possible functional dependencies with a single attribute on the right-hand side is combinatorially complex (factorial in the number of attributes). Therefore, a full enumeration has been avoided, except for key examples like the Dipendente relation.</p>
+<h2 id="example-functional-dependencies-on-dipendentematricola-nome-cognome-codfiscale" >
+<div>
+    <a href="#example-functional-dependencies-on-dipendentematricola-nome-cognome-codfiscale">
+        #
+    </a>
+    Example: Functional Dependencies on <code>Dipendente(Matricola, Nome, Cognome, CodFiscale)</code>
+</div>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Dependency</th>
+          <th>Holds?</th>
+          <th>Motivation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Matricola → Nome, Cognome, CodFiscale</td>
+          <td>✓</td>
+          <td>Each employee ID uniquely identifies a person</td>
+      </tr>
+      <tr>
+          <td>CodFiscale → Matricola, Nome, Cognome</td>
+          <td>✓</td>
+          <td>Fiscal code is unique per employee</td>
+      </tr>
+      <tr>
+          <td>Nome → Matricola</td>
+          <td>✗</td>
+          <td>Many people can share the same name</td>
+      </tr>
+      <tr>
+          <td>Cognome → Nome</td>
+          <td>✗</td>
+          <td>Same as above</td>
+      </tr>
+      <tr>
+          <td>Matricola, Nome → CodFiscale</td>
+          <td>✓</td>
+          <td>Combined, these ensure uniqueness</td>
+      </tr>
+      <tr>
+          <td>CodFiscale, Nome → Cognome</td>
+          <td>✓</td>
+          <td>Not minimal, but valid</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>(Full matrix omitted for brevity)</td>
+      </tr>
+  </tbody>
+</table>
+<p>The table is followed by a logical justification of the dependencies:</p>
+<ul>
+<li>
+<p>✅ IdEdificio → all other attributes</p>
+</li>
+<li>
+<p>✗ (Citta, Civico, Via) → Latitudine, Longitudine: same address can exist in multiple cities or areas.</p>
+</li>
+<li>
+<p>✅ IdSolaio → (IdEdificio, NumeroPiano)</p>
+</li>
+<li>
+<p>✗ IdEdificio → NumeroPiano: a building may have multiple floors.</p>
+</li>
+</ul>
+<h1 id="custom-analytics" >
+<div>
+    <a href="#custom-analytics">
+        ##
+    </a>
+    Custom Analytics
+</div>
+</h1>
+<p>After completing the full documentation of the database design process—including requirements analysis, conceptual modeling, ER restructuring, logical schema translation, and dependency analysis—the final step involved the implementation of advanced analytics functionalities.</p>
+<p>Among all custom analytics, the most significant is the computation of the <strong>Stato dell’Edificio</strong> (Building Status): a comprehensive indicator designed to estimate the health and safety of a building using sensor data.</p>
+<p><img src="/images/stato_edificio.png" alt="stato_edificio"></p>
+<p>This metric was designed with the goals of sustainability and structural monitoring in mind, key aspects of Smart Buildings&rsquo; mission.</p>
+<h2 id="building-status-stato-delledificio" >
+<div>
+    <a href="#building-status-stato-delledificio">
+        #
+    </a>
+    Building Status (Stato dell’Edificio)
+</div>
+</h2>
+<p>Evaluating the status of a building is a complex operation involving periodic processing of large volumes of sensor data. To ensure performance and accessibility:</p>
+<ul>
+<li>The status is computed monthly.</li>
+<li>It is stored in a <strong>materialized view</strong>.</li>
+<li>The materialized value may be slightly outdated, but it is always available for analytics and decision support.</li>
+</ul>
+<p>The building status consists of:</p>
+<ul>
+<li>A global numeric indicator: <code>StatoGenerale</code> (0–100).</li>
+<li>Three underlying coefficients:
+<ul>
+<li><code>Danni</code> (Damage)</li>
+<li><code>AlertNonGestiti</code> (Unresolved Alerts)</li>
+<li><code>StatoSprechi</code> (Waste)</li>
+</ul>
+</li>
+</ul>
+<h3 id="damage-danni" >
+<div>
+    <a href="#damage-danni">
+        ##
+    </a>
+    Damage (<code>Danni</code>)
+</div>
+</h3>
+<p>This coefficient is derived from the monitoring sensors that <strong>did not trigger alerts</strong>. For each sensor:</p>
+<ul>
+<li>All readings from the last month are collected.</li>
+<li>A <strong>normalized progression score</strong> is computed:</li>
+</ul>
+<p>Where:</p>
+<ul>
+<li>
+<p>\( X \) is the current measured value (or the vector magnitude for triaxial sensors).</p>
+</li>
+<li>
+<p>\( X_0 \) is the first value measured by the sensor upon installation.</p>
+</li>
+<li>
+<p><code>soglia</code> is the sensor&rsquo;s safety threshold.</p>
+</li>
+<li>
+<p>A <strong>damage score</strong> is computed per sensor:</p>
+</li>
+</ul>
+<p>$$
+\text{stato_danno} = 2 \cdot \overline{X}_{\text{rel}} + 3 \cdot \text{MaxV}
+$$</p>
+<p>Where:</p>
+<ul>
+<li><code>\(\overline{X}_{\mathrm{rel}}\)</code> is the <strong>average relative damage</strong> over the past month.</li>
+<li><code>\(\mathrm{MaxV}_{\mathrm{rel}}\)</code> is the <strong>maximum relative worsening speed</strong>, computed as:</li>
+</ul>
+<p>And each pairwise worsening speed is computed as:</p>
+<p>$$
+V_p = \frac{X_{\text{rel}, 2} - X_{\text{rel}, 1}}{T_2 - T_1}
+$$</p>
+<p>Finally, the overall damage score for the building is calculated as:</p>
+<p>$$
+\text{Danni} = \frac{\sum_i E_i \cdot \text{stato_danno}_i}{\sum_i E_i}
+$$</p>
+<p>Where:</p>
+<ul>
+<li>( E_i ) is the <strong>importance (Entità)</strong> of the damaged component.</li>
+</ul>
+<hr>
+<h3 id="unresolved-alerts-alertnongestiti" >
+<div>
+    <a href="#unresolved-alerts-alertnongestiti">
+        ##
+    </a>
+    Unresolved Alerts (<code>AlertNonGestiti</code>)
+</div>
+</h3>
+<p>This value indicates the percentage of alerts that have not yet been addressed:</p>
+<p>$$
+\text{AlertNonGestiti} = \frac{\text{NumeroAlertNonGestiti}}{\text{NumeroAlertTotali}}
+$$</p>
+<hr>
+<h2 id="waste-statosprechi" >
+<div>
+    <a href="#waste-statosprechi">
+        #
+    </a>
+    Waste (<code>StatoSprechi</code>)
+</div>
+</h2>
+<h4 id="thermal-insulation" >
+<div>
+    <a href="#thermal-insulation">
+        ###
+    </a>
+    Thermal Insulation:
+</div>
+</h4>
+<p>$$
+\text{isolamento} = \frac{\text{escursione termica interna media}}{\text{escursione termica esterna media}} \in [0, 1]
+$$</p>
+<h4 id="plumbing-leaks" >
+<div>
+    <a href="#plumbing-leaks">
+        ###
+    </a>
+    Plumbing Leaks:
+</div>
+</h4>
+<p>$$
+\text{stato_impianto_idraulico} = \frac{\text{umidità media mensile}}{60}
+$$</p>
+<h4 id="combined-waste-score" >
+<div>
+    <a href="#combined-waste-score">
+        ###
+    </a>
+    Combined Waste Score:
+</div>
+</h4>
+<p>$$
+\text{StatoSprechi} = \text{isolamento} + \text{stato_impianto_idraulico} \in [0, 2]
+$$</p>
+<hr>
+<h3 id="final-aggregated-score-statogenerale" >
+<div>
+    <a href="#final-aggregated-score-statogenerale">
+        ##
+    </a>
+    Final Aggregated Score: <code>StatoGenerale</code>
+</div>
+</h3>
+<p>The overall health status of the building is computed as:</p>
+<p>$$
+\text{StatoGenerale} = 100 - 60 \cdot \frac{\text{Danni}}{5} + 10 \cdot \frac{\text{StatoSprechi}}{2} + 30 \cdot \text{AlertNonGestiti}
+$$</p>
+<p>All values are normalized between 0 and 1 before being applied.</p>
+<ul>
+<li><code>Danni</code> weighs the actual and worsening state of structural damage.</li>
+<li><code>StatoSprechi</code> quantifies inefficiencies.</li>
+<li><code>AlertNonGestiti</code> highlights unresolved alarms.</li>
+</ul>
+<p>The result ranges from <strong>0 (critical)</strong> to <strong>100 (ideal)</strong>, enabling <strong>prioritized intervention planning</strong>.</p>
+<hr>
+<h2 id="download-documentation" >
+<div>
+    <a href="#download-documentation">
+        #
+    </a>
+    Download documentation
+</div>
+</h2>
+<blockquote>
+<p>📄 <a href="/doc/DB.pdf">click here</a> to download the final documentation</p></blockquote>
 
         </div>
 
@@ -491,8 +1483,6 @@ This is just a note</p></blockquote>
         
             <h3 class="read-next-title noselect">Read next</h3>
             <ul class="read-next-posts noselect">
-                
-                <li><a href="/operations-research/">MATLAB library for Operations Research</a></li>
                 
                 <li><a href="/sudoku/">Online Sudoku Game, Generator and Solver</a></li>
                 

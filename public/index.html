@@ -396,7 +396,34 @@
 
 
 
+    
+    
 
+
+
+
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 
@@ -521,78 +548,6 @@
                 
                     
                     <li><a href="/tags/project">#project</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-</article>
-
-        
-            <article class="post-list h-feed post-card">
-    <div class="post-header">
-        
-        
-        
-        
-        
-        <div class="hero-thumb-wrapper" style="height: 300px;">
-            <img src="/images/ricerca-operativa.png" alt="Post thumbnail"
-                class="hero-thumb-img"
-                style="object-position: center -190px;" />
-            <div class="hero-thumb-fade"></div>
-        </div>
-        
-        <header>
-            
-            
-            
-            <h1 class="p-name post-title ">
-                <a class="u-url" href="/operations-research/">MATLAB library for Operations Research</a>
-            </h1>
-        </header>
-        
-
-    </div>
-
-    
-        <div class="content post-summary p-summary">
-            Self Implemented Simplex, Gomory Algorithm, Branch &amp; Bound and Non Linear Method as Gradient Descent
-        </div>
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-    
-
-
-
-<div class="post-info noselect">
-    
-
-    <a class="post-hidden-url u-url" href="/operations-research/">/operations-research/</a>
-    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me">silviafesta2</a>
-
-
-    <div class="post-taxonomies">
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/universit%C3%A0-di-pisa">#università di pisa</a></li>
-                
-                    
-                    <li><a href="/tags/operations-research">#operations research</a></li>
                 
             </ul>
         

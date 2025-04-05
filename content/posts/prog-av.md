@@ -8,5 +8,4 @@ hero_thumb = "/images/prog-av.png"
 hero_thumb_height = 300       # Altezza visibile in pixel
 hero_thumb_offset_y = 200
 tags = ["università di pisa","java programming"]
-featured = true
 +++

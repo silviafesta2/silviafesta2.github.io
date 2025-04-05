@@ -7,7 +7,8 @@ theme = "anubis2"
 description = "Computer Engineering Student at Università di Pisa"
 enableSocial = true           # Enables social icons
 enableThemeSwitcher = true    # Light/Dark toggle
-enableMathGlobally = false    # Enable MathJax globally if needed
+enableMathGlobally = true    # Enable MathJax globally if needed
+math = true
 
 [params.Author]
     name = "Silvia Festa"
