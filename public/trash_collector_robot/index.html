@@ -846,7 +846,7 @@
 <li><strong>Explore a defined grid</strong>: The environment is partitioned into cells.</li>
 <li><strong>Detect objects</strong>: Classify objects as small (for retrieval), walls, or large obstacles.</li>
 <li><strong>Avoid collisions</strong>: Move in small increments with continuous sensor checks.</li>
-<li><strong>Plan paths</strong>: Greedily select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.</li>
+<li><strong>Plan paths</strong>: Select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.</li>
 </ol>
 <hr>
 <h2 id="system-overview" >
@@ -886,13 +886,13 @@
 <ol>
 <li><strong>GRID_ROWS</strong>: Total rows in the grid.</li>
 <li><strong>GRID_COLS</strong>: Total columns in the grid.</li>
-<li><strong>CELL_SIZE_MM</strong>: Side of the size of the squares.</li>
+<li><strong>CELL_SIZE_MM</strong>: Size of the side of the squares in mm.</li>
 </ol>
 <p>The process is the following:</p>
 <ol>
 <li><strong>Initialization</strong>: The grid is initialized with all cells marked as unvisited. The starting cell is immediately marked as visited.</li>
 <li><strong>Target Selection</strong>: The robot continually searches for the closest unvisited cell that is not marked as an obstacle.</li>
-<li><strong>Path Planning and Movement</strong>: Once a target is selected, the robot uses a greedy approach to move horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.</li>
+<li><strong>Path Planning and Movement</strong>: Once a target is selected, the robot moves horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.</li>
 </ol>
 <h2 id="sensor-based-object-detection" >
 <div>
@@ -958,7 +958,7 @@
     Navigation Strategy
 </div>
 </h2>
-<p>The navigation strategy employs a greedy algorithm that selects the nearest unvisited cell and then:</p>
+<p>The navigation strategy employs an algorithm that selects the nearest unvisited cell and then:</p>
 <ul>
 <li>Uses horizontal moves when only the X-axis movement is needed.</li>
 <li>Uses vertical moves when only the Y-axis movement is needed.</li>
@@ -1031,7 +1031,7 @@
     Conlcusion
 </div>
 </h2>
-<p>This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a greedy navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.</p>
+<p>This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.</p>
 
         </div>
 

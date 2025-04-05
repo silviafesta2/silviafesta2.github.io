@@ -531,7 +531,7 @@
 <ul>
 <li>Users: Stores user accounts, credentials (secured using salted hashes), and game preferences.</li>
 <li>Sudoku Puzzles: Maintains pre-generated classic puzzles with guaranteed uniqueness and dynamically generated puzzles.</li>
-<li>Game Sessions: Tracks ongoing and past games, user statistics, and interactions.</li>
+<li>Note mode: Users can add notes inside the board. Each cell can store multiple candidate numbers, allowing players to keep track of possible values during puzzle solving.</li>
 </ul>
 <h1 id="user-interface" >
 <div>
@@ -582,9 +582,9 @@
 <ol>
 <li>Number permutations</li>
 <li>Rotations</li>
-<li>Reflections
-These transformations greatly expand puzzle variety without compromising the uniqueness of the solutions.</li>
+<li>Reflections</li>
 </ol>
+<p>These transformations greatly expand puzzle variety without compromising the uniqueness of the solutions.</p>
 <h2 id="dynamically-generated-puzzles" >
 <div>
     <a href="#dynamically-generated-puzzles">
@@ -596,9 +596,8 @@ These transformations greatly expand puzzle variety without compromising the uni
 <p>Dynamic puzzle generation is achieved through iterative application of Sudoku-solving rules:</p>
 <ul>
 <li>Initially, an incomplete Sudoku board is generated.</li>
-<li>The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints) and advanced techniques (hidden pairs/triples, intersection removals).</li>
+<li>The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints, hidden pairs/triplets) and advanced techniques.</li>
 <li>If the solver cannot resolve the puzzle uniquely using rule-based approaches, an additional number is placed strategically, and the solving process is repeated.</li>
-<li>Should the puzzle generation fail (no solutions or multiple solutions), the puzzle generation restarts completely with a new initial board.</li>
 </ul>
 <p>Auxiliary data structures comprehend arrays 9x9x9 for every cell and arrays for every row, column and block in order to store are the possiblities for each specific cell.</p>
 <figure><img src="/images/generate1.png" width="400">
@@ -700,6 +699,7 @@ These transformations greatly expand puzzle variety without compromising the uni
 </div>
 </h1>
 <p>This documentation provides an extensive overview and understanding of the Sudoku Web Application project, its internal mechanisms, and the user experience delivered through meticulous design and engineering.</p>
+<p>For full code reference, <a href="https://github.com/silviafesta2/pweb">click here</a>.</p>
 
         </div>
 
@@ -714,11 +714,9 @@ These transformations greatly expand puzzle variety without compromising the uni
             <h3 class="read-next-title noselect">Read next</h3>
             <ul class="read-next-posts noselect">
                 
-                <li><a href="/sudoku/">MATLAB library for Operations Research</a></li>
+                <li><a href="/operations-research/">MATLAB library for Operations Research</a></li>
                 
-                <li><a href="/movie-finder/">MovieFinder, multithread app for cinema managing</a></li>
-                
-                <li><a href="/basi_di_dati/">MySQL Database for Smart Buildings</a></li>
+                <li><a href="/database/">MySQL Database for Smart Buildings</a></li>
                 
             </ul>
         

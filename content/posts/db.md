@@ -1,6 +1,6 @@
 +++
 title = "MySQL Database for Smart Buildings"
-url = "basi_di_dati"
+url = "database"
 summary = "Design and Implementation of a MySQL database for intelligent monitoring and predictive analytics"
 author = "silviafesta2"
 draft = false
@@ -10,3 +10,6 @@ hero_thumb_offset_y = 130
 tags = ["università di pisa","databases"]
 featured = true
 +++
+
+> [!note]
+> This is just a note

@@ -68,7 +68,7 @@
 &lt;ul&gt;
 &lt;li&gt;Users: Stores user accounts, credentials (secured using salted hashes), and game preferences.&lt;/li&gt;
 &lt;li&gt;Sudoku Puzzles: Maintains pre-generated classic puzzles with guaranteed uniqueness and dynamically generated puzzles.&lt;/li&gt;
-&lt;li&gt;Game Sessions: Tracks ongoing and past games, user statistics, and interactions.&lt;/li&gt;
+&lt;li&gt;Note mode: Users can add notes inside the board. Each cell can store multiple candidate numbers, allowing players to keep track of possible values during puzzle solving.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;user-interface&#34; &gt;
 &lt;div&gt;
@@ -119,9 +119,9 @@
 &lt;ol&gt;
 &lt;li&gt;Number permutations&lt;/li&gt;
 &lt;li&gt;Rotations&lt;/li&gt;
-&lt;li&gt;Reflections
-These transformations greatly expand puzzle variety without compromising the uniqueness of the solutions.&lt;/li&gt;
+&lt;li&gt;Reflections&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;These transformations greatly expand puzzle variety without compromising the uniqueness of the solutions.&lt;/p&gt;
 &lt;h2 id=&#34;dynamically-generated-puzzles&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#dynamically-generated-puzzles&#34;&gt;
@@ -133,9 +133,8 @@ These transformations greatly expand puzzle variety without compromising the uni
 &lt;p&gt;Dynamic puzzle generation is achieved through iterative application of Sudoku-solving rules:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Initially, an incomplete Sudoku board is generated.&lt;/li&gt;
-&lt;li&gt;The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints) and advanced techniques (hidden pairs/triples, intersection removals).&lt;/li&gt;
+&lt;li&gt;The solver applies classical Sudoku logic iteratively, including simple rules (single possibilities, row/column/box constraints, hidden pairs/triplets) and advanced techniques.&lt;/li&gt;
 &lt;li&gt;If the solver cannot resolve the puzzle uniquely using rule-based approaches, an additional number is placed strategically, and the solving process is repeated.&lt;/li&gt;
-&lt;li&gt;Should the puzzle generation fail (no solutions or multiple solutions), the puzzle generation restarts completely with a new initial board.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Auxiliary data structures comprehend arrays 9x9x9 for every cell and arrays for every row, column and block in order to store are the possiblities for each specific cell.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/generate1.png&#34; width=&#34;400&#34;&gt;
@@ -237,6 +236,7 @@ These transformations greatly expand puzzle variety without compromising the uni
 &lt;/div&gt;
 &lt;/h1&gt;
 &lt;p&gt;This documentation provides an extensive overview and understanding of the Sudoku Web Application project, its internal mechanisms, and the user experience delivered through meticulous design and engineering.&lt;/p&gt;
+&lt;p&gt;For full code reference, &lt;a href=&#34;https://github.com/silviafesta2/pweb&#34;&gt;click here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

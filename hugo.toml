@@ -23,6 +23,9 @@ url = "mailto:silviafesta02@gmail.com"
 
 
 [markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+          unsafe = true
   [markup.highlight]
     style = "onedark"
     lineNos = true         # Enable line numbers (optional)
