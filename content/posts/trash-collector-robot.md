@@ -137,7 +137,7 @@ This section explains the algorithm and software implemented on an Arduino-based
 1. **Explore a defined grid**: The environment is partitioned into cells.
 2. **Detect objects**: Classify objects as small (for retrieval), walls, or large obstacles.
 3. **Avoid collisions**: Move in small increments with continuous sensor checks.
-4. **Plan paths**: Greedily select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.
+4. **Plan paths**: Select the closest unvisited free cell and navigate there using diagonal, horizontal, and vertical movements.
 
 ---
 
@@ -165,12 +165,12 @@ flowchart TD
 The environment is divided into a grid of squares defined by three parameters:
 1. **GRID_ROWS**: Total rows in the grid.
 2. **GRID_COLS**: Total columns in the grid.
-3. **CELL_SIZE_MM**: Side of the size of the squares.
+3. **CELL_SIZE_MM**: Size of the side of the squares in mm.
 
 The process is the following:
 1. **Initialization**: The grid is initialized with all cells marked as unvisited. The starting cell is immediately marked as visited.
 2. **Target Selection**: The robot continually searches for the closest unvisited cell that is not marked as an obstacle.
-3. **Path Planning and Movement**: Once a target is selected, the robot uses a greedy approach to move horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.
+3. **Path Planning and Movement**: Once a target is selected, the robot moves horizontally, vertically, or diagonally to reach the cell while updating its current grid coordinates.
 
 ## Sensor Based Object Detection
 The robot uses three VL53L0X sensors: left, center, and right. Based on their readings, the robot determines what is in front of it with the following rules:
@@ -217,7 +217,7 @@ sequenceDiagram
 ```
 
 ## Navigation Strategy
-The navigation strategy employs a greedy algorithm that selects the nearest unvisited cell and then:
+The navigation strategy employs an algorithm that selects the nearest unvisited cell and then:
 - Uses horizontal moves when only the X-axis movement is needed.
 - Uses vertical moves when only the Y-axis movement is needed.
 - Uses diagonal moves (if both axes require movement and the diagonal cell is free) by turning 45° right, moving forward, and then turning 45° left to reorient.
@@ -252,5 +252,5 @@ Future enhancements may include:
 
 
 ## Conlcusion
-This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a greedy navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.
+This documentation details the design and implementation of a grid-based exploration and object retrieval system for an Arduino-based robot. The algorithm integrates sensor data, grid mapping, collision avoidance, and a navigation strategy to explore a predefined environment effectively. The modular design ensures ease of modification and extension, making it a strong foundation for advanced robotics research and applications.
 

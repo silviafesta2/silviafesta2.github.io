@@ -32,7 +32,7 @@ The application follows a traditional LAMP stack architecture:
 The database schema supports multiple functionalities:
 - Users: Stores user accounts, credentials (secured using salted hashes), and game preferences.
 - Sudoku Puzzles: Maintains pre-generated classic puzzles with guaranteed uniqueness and dynamically generated puzzles.
-- Game Sessions: Tracks ongoing and past games, user statistics, and interactions.
+- Note mode: Users can add notes inside the board. Each cell can store multiple candidate numbers, allowing players to keep track of possible values during puzzle solving.
 
 # User Interface
 The web interface provides intuitive interaction for users:
@@ -52,9 +52,11 @@ There are two main types of Sudoku puzzles in the system:
 
 ## Classic Puzzles
 These puzzles are sourced from established Sudoku collections, pre-validated for uniqueness of solution. The application supports transformations including:
+
 1. Number permutations
 2. Rotations
 3. Reflections
+
 These transformations greatly expand puzzle variety without compromising the uniqueness of the solutions.
 
 ## Dynamically Generated Puzzles
