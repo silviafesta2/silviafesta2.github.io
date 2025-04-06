@@ -546,6 +546,7 @@
       </ul>
     </li>
     <li><a href="#download-documentation">Download documentation</a></li>
+    <li><a href="#code">Code</a></li>
   </ul>
 </nav></div>
   </details>
@@ -595,7 +596,7 @@
 <ul>
 <li>Storing detailed information about buildings, rooms, sensors, and actuators.</li>
 <li>Efficiently handling real-time sensor data.</li>
-<li>Providing support for complex queries to assist in building automation and management decisions.</li>
+<li>Providing support for complex queries to assist in building management decisions.</li>
 </ul>
 <h1 id="requirement-analysis" >
 <div>
@@ -605,7 +606,7 @@
     Requirement Analysis
 </div>
 </h1>
-<p>The requirements analysis phase was divided into several sub-areas to identify the specific data and functionalities required by the database system:</p>
+<p>The database was logically divided into three different parts:</p>
 <h2 id="general-area" >
 <div>
     <a href="#general-area">
@@ -614,9 +615,9 @@
     General Area
 </div>
 </h2>
-<p>In this area, information was gathered about the geographic location, building structures, and associated risks:</p>
+<p>This area is contains general informations about buildings:</p>
 <ul>
-<li><strong>Geographic and Structural Information</strong>: Buildings are identified by their geographic locations, types (single-family house, condominium, etc.), and detailed topologies. Each building comprises multiple floors, and each floor has a specific floor plan represented by polygons.</li>
+<li><strong>Geographic and Structural Information</strong>: Buildings are identified by their geographic locations, types (single-family house, apartment building, etc.), and detailed topologies. Each building is made of multiple floors, and each floor has a specific floor plan represented by polygons.</li>
 <li><strong>Rooms</strong>: Each floor is subdivided into rooms, each with maximum width, length, and height. Rooms can have irregular shapes and serve various functions (bedrooms, bathrooms, storerooms).</li>
 <li><strong>Access Points</strong>: Each room has access points such as doors, arches, or windowed openings. Details about these openings (dimensions, orientation) are essential for the database.</li>
 <li><strong>Risk Assessment</strong>: Each geographic area is subject to risks like seismic and hydrogeological hazards. Risk coefficients for each area are dynamic, and their historical values must be stored for future analysis.</li>
@@ -709,7 +710,7 @@
     Conceptual Design: Entity-Relationship Diagrams
 </div>
 </h1>
-<p>The conceptual design phase consists of a thorough modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.</p>
+<p>The conceptual design phase consists of a complete modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.</p>
 <h2 id="functional-areas-covered" >
 <div>
     <a href="#functional-areas-covered">
@@ -1469,7 +1470,17 @@ $$</p>
 </div>
 </h2>
 <blockquote>
-<p>📄 <a href="/doc/DB.pdf">click here</a> to download the final documentation</p></blockquote>
+<p>📄 <a href="/doc/DB.pdf">click here</a> to download the complete documentation</p></blockquote>
+<h2 id="code" >
+<div>
+    <a href="#code">
+        #
+    </a>
+    Code
+</div>
+</h2>
+<blockquote>
+<p>💻 <a href="https://github.com/silviafesta2/SmartBuildings">click here</a> to see the code</p></blockquote>
 
         </div>
 

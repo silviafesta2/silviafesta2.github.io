@@ -560,7 +560,7 @@
 &lt;ul&gt;
 &lt;li&gt;Storing detailed information about buildings, rooms, sensors, and actuators.&lt;/li&gt;
 &lt;li&gt;Efficiently handling real-time sensor data.&lt;/li&gt;
-&lt;li&gt;Providing support for complex queries to assist in building automation and management decisions.&lt;/li&gt;
+&lt;li&gt;Providing support for complex queries to assist in building management decisions.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;requirement-analysis&#34; &gt;
 &lt;div&gt;
@@ -570,7 +570,7 @@
     Requirement Analysis
 &lt;/div&gt;
 &lt;/h1&gt;
-&lt;p&gt;The requirements analysis phase was divided into several sub-areas to identify the specific data and functionalities required by the database system:&lt;/p&gt;
+&lt;p&gt;The database was logically divided into three different parts:&lt;/p&gt;
 &lt;h2 id=&#34;general-area&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#general-area&#34;&gt;
@@ -579,9 +579,9 @@
     General Area
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;In this area, information was gathered about the geographic location, building structures, and associated risks:&lt;/p&gt;
+&lt;p&gt;This area is contains general informations about buildings:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Geographic and Structural Information&lt;/strong&gt;: Buildings are identified by their geographic locations, types (single-family house, condominium, etc.), and detailed topologies. Each building comprises multiple floors, and each floor has a specific floor plan represented by polygons.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Geographic and Structural Information&lt;/strong&gt;: Buildings are identified by their geographic locations, types (single-family house, apartment building, etc.), and detailed topologies. Each building is made of multiple floors, and each floor has a specific floor plan represented by polygons.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Rooms&lt;/strong&gt;: Each floor is subdivided into rooms, each with maximum width, length, and height. Rooms can have irregular shapes and serve various functions (bedrooms, bathrooms, storerooms).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Access Points&lt;/strong&gt;: Each room has access points such as doors, arches, or windowed openings. Details about these openings (dimensions, orientation) are essential for the database.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Risk Assessment&lt;/strong&gt;: Each geographic area is subject to risks like seismic and hydrogeological hazards. Risk coefficients for each area are dynamic, and their historical values must be stored for future analysis.&lt;/li&gt;
@@ -674,7 +674,7 @@
     Conceptual Design: Entity-Relationship Diagrams
 &lt;/div&gt;
 &lt;/h1&gt;
-&lt;p&gt;The conceptual design phase consists of a thorough modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.&lt;/p&gt;
+&lt;p&gt;The conceptual design phase consists of a complete modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.&lt;/p&gt;
 &lt;h2 id=&#34;functional-areas-covered&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#functional-areas-covered&#34;&gt;
@@ -1434,7 +1434,17 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;📄 &lt;a href=&#34;http://localhost:1313/doc/DB.pdf&#34;&gt;click here&lt;/a&gt; to download the final documentation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;📄 &lt;a href=&#34;http://localhost:1313/doc/DB.pdf&#34;&gt;click here&lt;/a&gt; to download the complete documentation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;code&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#code&#34;&gt;
+        #
+    &lt;/a&gt;
+    Code
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💻 &lt;a href=&#34;https://github.com/silviafesta2/SmartBuildings&#34;&gt;click here&lt;/a&gt; to see the code&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     

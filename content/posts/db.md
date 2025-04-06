@@ -256,6 +256,7 @@ The General Area concerns the physical structure of buildings, rooms, walls, and
 
 ### Tables:
 
+```sql
 Edificio(IdEdificio, AnnoCostruzione, Citta, Civico, Via, Latitudine, Longitudine)
 
 Piano(NumeroPiano, IdEdificio, IdParte)

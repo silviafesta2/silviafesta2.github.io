@@ -18,15 +18,6 @@
     
     
     <item>
-      <title>MATLAB library for Operations Research</title>
-      <link>/operations-research/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/operations-research/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>MySQL Database for Smart Buildings</title>
       <link>/database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -40,7 +31,7 @@
     Project Specification
 &lt;/div&gt;
 &lt;/h1&gt;
-&lt;p&gt;This project involves the design and implementation of a relational database using Oracle MySQL to support a Smart Buildings system, which manages construction, renovation, and structural monitoring of buildings. The system stores detailed architectural and geographic data, tracks construction progress and materials, and integrates sensor data for real-time safety assessment and predictive maintenance. Advanced data analytics features are required to evaluate structural risks, estimate damage after disasters, and recommend interventions. The database supports entity-relationship modeling, functional dependency analysis, and performance optimization through redundancy and normalization strategies.&lt;/p&gt;
+&lt;p&gt;This project involves the design and implementation of a relational database using Oracle MySQL to support a Smart Buildings system, which manages construction, renovation, and structural monitoring of buildings. The system stores detailed architectural and geographic data, tracks construction progress and materials, and integrates sensor data for real-time safety assessment and predictive maintenance. Advanced data analytics features are required to evaluate structural risks, estimate damage after disasters, and recommend interventions. This documentation contains entity-relationship modeling, functional dependency analysis, and performance optimization through redundancy and normalization strategies.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;📄 &lt;a href=&#34;http://localhost:1313/doc/Progetto-A.A.21-22.pdf&#34;&gt;click here&lt;/a&gt; to download the project specification&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;project-objective&#34; &gt;
@@ -53,9 +44,9 @@
 &lt;/h1&gt;
 &lt;p&gt;The goal is to design and implement a relational database system capable of:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Storing detailed information about buildings, rooms, sensors, actuators, and occupants.&lt;/li&gt;
-&lt;li&gt;Efficiently handling real-time sensor data and control signals for actuators.&lt;/li&gt;
-&lt;li&gt;Providing support for complex queries to assist in building automation and management decisions.&lt;/li&gt;
+&lt;li&gt;Storing detailed information about buildings, rooms, sensors, and actuators.&lt;/li&gt;
+&lt;li&gt;Efficiently handling real-time sensor data.&lt;/li&gt;
+&lt;li&gt;Providing support for complex queries to assist in building management decisions.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;requirement-analysis&#34; &gt;
 &lt;div&gt;
@@ -65,7 +56,7 @@
     Requirement Analysis
 &lt;/div&gt;
 &lt;/h1&gt;
-&lt;p&gt;The requirements analysis phase was divided into several sub-areas to identify the specific data and functionalities required by the database system:&lt;/p&gt;
+&lt;p&gt;The database was logically divided into three different parts:&lt;/p&gt;
 &lt;h2 id=&#34;general-area&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#general-area&#34;&gt;
@@ -74,9 +65,9 @@
     General Area
 &lt;/div&gt;
 &lt;/h2&gt;
-&lt;p&gt;In this area, information was gathered about the geographic location, building structures, and associated risks:&lt;/p&gt;
+&lt;p&gt;This area is contains general informations about buildings:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Geographic and Structural Information&lt;/strong&gt;: Buildings are identified by their geographic locations, types (single-family house, condominium, etc.), and detailed topologies. Each building comprises multiple floors, and each floor has a specific floor plan represented by polygons.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Geographic and Structural Information&lt;/strong&gt;: Buildings are identified by their geographic locations, types (single-family house, apartment building, etc.), and detailed topologies. Each building is made of multiple floors, and each floor has a specific floor plan represented by polygons.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Rooms&lt;/strong&gt;: Each floor is subdivided into rooms, each with maximum width, length, and height. Rooms can have irregular shapes and serve various functions (bedrooms, bathrooms, storerooms).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Access Points&lt;/strong&gt;: Each room has access points such as doors, arches, or windowed openings. Details about these openings (dimensions, orientation) are essential for the database.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Risk Assessment&lt;/strong&gt;: Each geographic area is subject to risks like seismic and hydrogeological hazards. Risk coefficients for each area are dynamic, and their historical values must be stored for future analysis.&lt;/li&gt;
@@ -169,7 +160,7 @@
     Conceptual Design: Entity-Relationship Diagrams
 &lt;/div&gt;
 &lt;/h1&gt;
-&lt;p&gt;The conceptual design phase consists of a thorough modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.&lt;/p&gt;
+&lt;p&gt;The conceptual design phase consists of a complete modeling of the Smart Buildings database using Entity-Relationship (ER) diagrams. For each functional area of the system, a dedicated ER diagram has been developed to visually and structurally represent entities, relationships, attributes, and constraints. The modeling work has been further supplemented with comprehensive documentation, including data dictionaries and rules that are not immediately apparent from the diagrams alone.&lt;/p&gt;
 &lt;h2 id=&#34;functional-areas-covered&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#functional-areas-covered&#34;&gt;
@@ -769,6 +760,7 @@ A table is created for the superclass and each subclass, connected via foreign k
 &lt;/h1&gt;
 &lt;p&gt;After completing the full documentation of the database design process—including requirements analysis, conceptual modeling, ER restructuring, logical schema translation, and dependency analysis—the final step involved the implementation of advanced analytics functionalities.&lt;/p&gt;
 &lt;p&gt;Among all custom analytics, the most significant is the computation of the &lt;strong&gt;Stato dell’Edificio&lt;/strong&gt; (Building Status): a comprehensive indicator designed to estimate the health and safety of a building using sensor data.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/stato_edificio.png&#34; alt=&#34;stato_edificio&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This metric was designed with the goals of sustainability and structural monitoring in mind, key aspects of Smart Buildings&amp;rsquo; mission.&lt;/p&gt;
 &lt;h2 id=&#34;building-status-stato-delledificio&#34; &gt;
 &lt;div&gt;
@@ -808,34 +800,38 @@ A table is created for the superclass and each subclass, connected via foreign k
 &lt;li&gt;All readings from the last month are collected.&lt;/li&gt;
 &lt;li&gt;A &lt;strong&gt;normalized progression score&lt;/strong&gt; is computed:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;X_{\text{rel}} = \frac{X - X_0}{\text{soglia} - X_0}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where:&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;( X ) is the current measured value (or the vector magnitude for triaxial sensors).&lt;/p&gt;
+&lt;p&gt;\( X \) is the current measured value (or the vector magnitude for triaxial sensors).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;( X_0 ) is the first value measured by the sensor upon installation.&lt;/p&gt;
+&lt;p&gt;\( X_0 \) is the first value measured by the sensor upon installation.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;( \text{soglia} ) is the sensor&amp;rsquo;s safety threshold.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;soglia&lt;/code&gt; is the sensor&amp;rsquo;s safety threshold.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;A &lt;strong&gt;damage score&lt;/strong&gt; is computed per sensor:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{stato\_danno} = 2 \cdot \overline{X}_{\text{rel}} + 3 \cdot \text{Max V}_{\text{rel}}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where:&lt;/p&gt;
+&lt;p&gt;$$
+\text{stato_danno} = 2 \cdot \overline{X}_{\text{rel}} + 3 \cdot \text{MaxV}
+$$&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;( \overline{X}_{\text{rel}} ) is the &lt;strong&gt;average relative damage&lt;/strong&gt; for the month.&lt;/li&gt;
-&lt;li&gt;( \text{Max V}_{\text{rel}} ) is the &lt;strong&gt;maximum relative worsening speed&lt;/strong&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\(\overline{X}_{\mathrm{rel}}\)&lt;/code&gt; is the &lt;strong&gt;average relative damage&lt;/strong&gt; over the past month.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\(\mathrm{MaxV}_{\mathrm{rel}}\)&lt;/code&gt; is the &lt;strong&gt;maximum relative worsening speed&lt;/strong&gt;, computed as:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{Max V}_{\text{rel}} = \frac{\max(V_p)}{\text{VMAX}_{\text{tipo}}}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And each pairwise worsening speed is computed as:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;V_p = \frac{X_{\text{rel}, 2} - X_{\text{rel}, 1}}{T_2 - T_1}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Finally, the overall damage score for the building is calculated as:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{Danni} = \frac{\sum_i E_i \cdot \text{stato\_danno}_i}{\sum_i E_i}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where:&lt;/p&gt;
+&lt;p&gt;And each pairwise worsening speed is computed as:&lt;/p&gt;
+&lt;p&gt;$$
+V_p = \frac{X_{\text{rel}, 2} - X_{\text{rel}, 1}}{T_2 - T_1}
+$$&lt;/p&gt;
+&lt;p&gt;Finally, the overall damage score for the building is calculated as:&lt;/p&gt;
+&lt;p&gt;$$
+\text{Danni} = \frac{\sum_i E_i \cdot \text{stato_danno}_i}{\sum_i E_i}
+$$&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;( E_i ) is the &lt;strong&gt;importance (Entità)&lt;/strong&gt; of the damaged component.&lt;/li&gt;
 &lt;/ul&gt;
@@ -849,14 +845,16 @@ A table is created for the superclass and each subclass, connected via foreign k
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;This value indicates the percentage of alerts that have not yet been addressed:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{AlertNonGestiti} = \frac{\text{NumeroAlertNonGestiti}}{\text{NumeroAlertTotali}}
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;913-waste-statosprechi&#34; &gt;
+&lt;p&gt;$$
+\text{AlertNonGestiti} = \frac{\text{NumeroAlertNonGestiti}}{\text{NumeroAlertTotali}}
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;waste-statosprechi&#34; &gt;
 &lt;div&gt;
-    &lt;a href=&#34;#913-waste-statosprechi&#34;&gt;
+    &lt;a href=&#34;#waste-statosprechi&#34;&gt;
         #
     &lt;/a&gt;
-    9.1.3 Waste (&lt;code&gt;StatoSprechi&lt;/code&gt;)
+    Waste (&lt;code&gt;StatoSprechi&lt;/code&gt;)
 &lt;/div&gt;
 &lt;/h2&gt;
 &lt;h4 id=&#34;thermal-insulation&#34; &gt;
@@ -867,8 +865,10 @@ A table is created for the superclass and each subclass, connected via foreign k
     Thermal Insulation:
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{isolamento} = \frac{\text{escursione termica interna media}}{\text{escursione termica esterna media}} \in [0, 1]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;plumbing-leaks&#34; &gt;
+&lt;p&gt;$$
+\text{isolamento} = \frac{\text{escursione termica interna media}}{\text{escursione termica esterna media}} \in [0, 1]
+$$&lt;/p&gt;
+&lt;h4 id=&#34;plumbing-leaks&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#plumbing-leaks&#34;&gt;
         ###
@@ -876,8 +876,10 @@ A table is created for the superclass and each subclass, connected via foreign k
     Plumbing Leaks:
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{stato\_impianto\_idraulico} = \frac{\text{umidità media mensile}}{60}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;combined-waste-score&#34; &gt;
+&lt;p&gt;$$
+\text{stato_impianto_idraulico} = \frac{\text{umidità media mensile}}{60}
+$$&lt;/p&gt;
+&lt;h4 id=&#34;combined-waste-score&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#combined-waste-score&#34;&gt;
         ###
@@ -885,8 +887,10 @@ A table is created for the superclass and each subclass, connected via foreign k
     Combined Waste Score:
 &lt;/div&gt;
 &lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-math&#34; data-lang=&#34;math&#34;&gt;\text{StatoSprechi} = \text{isolamento} + \text{stato\_impianto\_idraulico} \in [0, 2]
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;$$
+\text{StatoSprechi} = \text{isolamento} + \text{stato_impianto_idraulico} \in [0, 2]
+$$&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;final-aggregated-score-statogenerale&#34; &gt;
 &lt;div&gt;
     &lt;a href=&#34;#final-aggregated-score-statogenerale&#34;&gt;
@@ -896,9 +900,9 @@ A table is created for the superclass and each subclass, connected via foreign k
 &lt;/div&gt;
 &lt;/h3&gt;
 &lt;p&gt;The overall health status of the building is computed as:&lt;/p&gt;
-&lt;p&gt;\(
+&lt;p&gt;$$
 \text{StatoGenerale} = 100 - 60 \cdot \frac{\text{Danni}}{5} + 10 \cdot \frac{\text{StatoSprechi}}{2} + 30 \cdot \text{AlertNonGestiti}
-\)&lt;/p&gt;
+$$&lt;/p&gt;
 &lt;p&gt;All values are normalized between 0 and 1 before being applied.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Danni&lt;/code&gt; weighs the actual and worsening state of structural damage.&lt;/li&gt;
@@ -906,6 +910,27 @@ A table is created for the superclass and each subclass, connected via foreign k
 &lt;li&gt;&lt;code&gt;AlertNonGestiti&lt;/code&gt; highlights unresolved alarms.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The result ranges from &lt;strong&gt;0 (critical)&lt;/strong&gt; to &lt;strong&gt;100 (ideal)&lt;/strong&gt;, enabling &lt;strong&gt;prioritized intervention planning&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;download-documentation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#download-documentation&#34;&gt;
+        #
+    &lt;/a&gt;
+    Download documentation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;📄 &lt;a href=&#34;http://localhost:1313/doc/DB.pdf&#34;&gt;click here&lt;/a&gt; to download the complete documentation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;code&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#code&#34;&gt;
+        #
+    &lt;/a&gt;
+    Code
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💻 &lt;a href=&#34;https://github.com/silviafesta2/SmartBuildings&#34;&gt;click here&lt;/a&gt; to see the code&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
